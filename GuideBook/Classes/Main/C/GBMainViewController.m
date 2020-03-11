@@ -7,59 +7,67 @@
 //
 
 #import "GBMainViewController.h"
-#import "YAWaveView.h"
+#import "GBMainTableHeadView.h"
 
-@interface GBMainViewController ()<YAWaveViewDelegate>
-@property (nonatomic, strong) UILabel *percentLab;
+@interface GBMainViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic, strong) UITableView *list;
+@property (nonatomic, strong) GBMainTableHeadView *headView;
 @end
 
 @implementation GBMainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self setUI];
     // Do any additional setup after loading the view.
 }
 
 - (void)setUI{
     self.navigationItem.title = @"训练项目";
+    [self.view addSubview:self.list];
+    [self.list setTableHeaderView:self.headView];
+}
+
+#pragma mark -- uitableview delegate datasource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 30;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mainTableCell" forIndexPath:indexPath];
     
-    NSArray *colors = @[(__bridge id)HexColor(@"#FFB770").CGColor, (__bridge id)HexColor(@"#00CC00").CGColor];  //里
-    NSArray *sColors = @[(__bridge id)HexColor(@"#FF8817").CGColor, (__bridge id)HexColor(@"#FFDC5F").CGColor];  //外
+    cell.textLabel.text = @"222";
     
-    CGFloat waveWidth = 95;
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    //自定义背景渐变-圆形波浪
-    YAWaveView *customWave = [[YAWaveView alloc]initWithFrame:CGRectMake(self.view.width/2-waveWidth/2, 20, waveWidth, waveWidth)];
-    [self.view addSubview:customWave];
-    customWave.layer.cornerRadius = waveWidth/2;
-    customWave.clipsToBounds = YES;
-    customWave.colors = colors;
-    customWave.sColors = sColors;
-    customWave.percent = 0.7;
-    customWave.delegate = self;
-    [customWave startWave];
-    [customWave addSubview:self.percentLab];
-    self.percentLab.sd_layout
-    .centerXEqualToView(customWave)
-    .centerYEqualToView(customWave)
-    .heightIs(20);
-    [self.percentLab setSingleLineAutoResizeWithMaxWidth:120];
 }
 
 #pragma mark - setters
-- (UILabel *)percentLab
-{
-    if (!_percentLab) {
-        _percentLab = [UILabel new];
-        _percentLab.text = @"70%";
-        _percentLab.textColor = HexColor(@"#FFFFFF");
-        _percentLab.font = FONT_SIZE_18;
-        _percentLab.attributedText = [_percentLab.text addShadowWtihString:_percentLab.text color:@"#894000"];
+
+- (UITableView *)list{
+    if (!_list) {
+        _list = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, GB_ScreenWidth, GB_ScreenHeight-NaviH) style:(UITableViewStylePlain)];
+        [_list setDelegate:self];
+        [_list setDataSource:self];
+        [_list registerClass:[UITableViewCell class] forCellReuseIdentifier:@"mainTableCell"];
     }
-    return _percentLab;
+    return _list;
+}
+
+- (GBMainTableHeadView *)headView{
+    if (!_headView) {
+        _headView = [[GBMainTableHeadView alloc] initWithFrame:CGRectMake(0, 0, GB_ScreenWidth, 120)];
+    }
+    return _headView;
 }
 
 /*
