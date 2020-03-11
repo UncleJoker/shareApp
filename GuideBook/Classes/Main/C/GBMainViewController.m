@@ -65,7 +65,7 @@
 
 - (GBMainTableHeadView *)headView{
     if (!_headView) {
-        _headView = [[GBMainTableHeadView alloc] initWithFrame:CGRectMake(0, 0, GB_ScreenWidth, 120)];
+        _headView = [[GBMainTableHeadView alloc] initWithFrame:CGRectMake(0, 0, GB_ScreenWidth, 300)];
     }
     return _headView;
 }

@@ -34,7 +34,7 @@
     .leftEqualToView(self)
     .rightEqualToView(self)
     .topEqualToView(self)
-    .heightIs(122);
+    .heightIs(220);
     [self.pagerView addSubview:self.pageControl];
     self.pageControl.sd_layout
     .bottomSpaceToView(self.pagerView, 0)
@@ -42,8 +42,19 @@
     .leftEqualToView(self.pagerView)
     .rightEqualToView(self.pagerView);
     
+    
+    CGFloat btnCount = 4;
+    CGFloat btnHeight = 50;
+    CGFloat btnMargin = (GB_ScreenWidth-btnHeight*btnCount)/5;
+    
+    for (int i = 0; i < btnCount; i ++) {
+        UIButton *tapBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        [tapBtn setTag:1000 + i];
+        [tapBtn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"tapBtn%d",i]] forState:(UIControlStateNormal)];
+        [self addSubview:tapBtn];
+        tapBtn.sd_layout.leftSpaceToView(self, btnMargin+i*(btnHeight+btnMargin)).widthIs(btnHeight).topSpaceToView(self.pagerView, 20).heightIs(btnHeight);
+    }
 }
-
 
 #pragma mark TYCyclePagerViewDataSource TYCyclePagerViewDelegate
 - (NSInteger)numberOfItemsInPagerView:(TYCyclePagerView *)pageView
@@ -60,16 +71,14 @@
 
 - (TYCyclePagerViewLayout *)layoutForPagerView:(TYCyclePagerView *)pageView {
     TYCyclePagerViewLayout *layout = [[TYCyclePagerViewLayout alloc]init];
-    layout.itemSize = CGSizeMake(CGRectGetWidth(pageView.frame), CGRectGetHeight(pageView.frame));
-    layout.itemSpacing = 0;
-//    layout.minimumAlpha = 0.3;
-    //    layout.itemHorizontalCenter = _horCenterSwitch.isOn;
+    layout.layoutType = TYCyclePagerTransformLayoutCoverflow;
+    layout.itemSize = CGSizeMake(CGRectGetWidth(pageView.frame)-20, CGRectGetHeight(pageView.frame));
+    layout.itemSpacing = 10;
     return layout;
 }
 
 - (void)pagerView:(TYCyclePagerView *)pageView didScrollFromIndex:(NSInteger)fromIndex toIndex:(NSInteger)toIndex {
     _pageControl.currentPage = toIndex;
-    //[_pageControl setCurrentPage:newIndex animate:YES];
 }
 
 - (void)pagerView:(TYCyclePagerView *)pageView didSelectedItemCell:(__kindof UICollectionViewCell *)cell atIndex:(NSInteger)index
