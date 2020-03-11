@@ -22,21 +22,6 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)viewWillLayoutSubviews{
-    [super viewWillLayoutSubviews];
-    
-    if (GB_isIphonex) {
-        CGRect frame = self.tabBar.frame;
-        frame.size.height = 49;
-        frame.origin.y = self.view.frame.size.height - frame.size.height;
-        self.tabBar.frame = frame;
-        for (UITabBarItem *item in self.tabBar.items) {
-            item.imageInsets = UIEdgeInsetsMake(15,0, -15, 0);
-            [item setTitlePositionAdjustment:UIOffsetMake(0, 32)];
-        }
-    }
-}
-
 
 /*
 #pragma mark - Navigation

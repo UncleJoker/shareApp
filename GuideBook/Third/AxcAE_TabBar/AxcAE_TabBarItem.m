@@ -278,10 +278,7 @@
     return _badgeLabel;
 }
 
-
 @end
-
-
 
 
 @implementation AxcAE_TabBarConfigModel

@@ -194,13 +194,13 @@
 		18E24DF32418BB7200CD0EF5 /* AxcAE_TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				18E24DF72418BB7200CD0EF5 /* AxcAE_TabBarDefine.h */,
+				18E24DFA2418BB7200CD0EF5 /* AxcAE_TabBarBadge.h */,
 				18E24DF42418BB7200CD0EF5 /* AxcAE_TabBarBadge.m */,
 				18E24DF52418BB7200CD0EF5 /* AxcAE_TabBarItem.h */,
-				18E24DF62418BB7200CD0EF5 /* AxcAE_TabBar.m */,
-				18E24DF72418BB7200CD0EF5 /* AxcAE_TabBarDefine.h */,
-				18E24DF82418BB7200CD0EF5 /* AxcAE_TabBar.h */,
 				18E24DF92418BB7200CD0EF5 /* AxcAE_TabBarItem.m */,
-				18E24DFA2418BB7200CD0EF5 /* AxcAE_TabBarBadge.h */,
+				18E24DF82418BB7200CD0EF5 /* AxcAE_TabBar.h */,
+				18E24DF62418BB7200CD0EF5 /* AxcAE_TabBar.m */,
 			);
 			path = AxcAE_TabBar;
 			sourceTree = "<group>";

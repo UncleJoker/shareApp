@@ -66,7 +66,7 @@
                 model.itemSize = CGSizeMake(self.tabBar.frame.size.width / 5 - 5.0 ,self.tabBar.frame.size.height + 20);
             }else{
                 model.interactionEffectStyle = AxcAE_TabBarInteractionEffectStyleSpring;
-                model.selectBackgroundColor = AxcAE_TabBarRGBA(248, 248, 248, 1);
+                model.selectBackgroundColor = [UIColor clearColor];
                 model.normalBackgroundColor = [UIColor clearColor];
             }
             UIViewController *vc = [obj objectForKey:@"vc"];
@@ -79,7 +79,7 @@
         self.axcTabBar = [AxcAE_TabBar new] ;
         self.axcTabBar.tabBarConfig = tabBarConfs;
         self.axcTabBar.delegate = self;
-        self.axcTabBar.backgroundColor = [UIColor whiteColor];
+        self.axcTabBar.backgroundColor = [UIColor cyanColor];
         [self.tabBar addSubview:self.axcTabBar];
         [self addLayoutTabBar];
     
@@ -91,7 +91,6 @@
 }
 
 
-static NSInteger lastIdx = 0;
 - (void)axcAE_TabBar:(AxcAE_TabBar *)tabbar selectIndex:(NSInteger)index{
     
 }
