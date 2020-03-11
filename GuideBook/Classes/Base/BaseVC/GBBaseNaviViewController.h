@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  GBBaseNaviViewController.h
 //  GuideBook
 //
 //  Created by Apple on 2020/3/11.
@@ -8,8 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+NS_ASSUME_NONNULL_BEGIN
 
+@interface GBBaseNaviViewController : UINavigationController
 
 @end
 
+NS_ASSUME_NONNULL_END
