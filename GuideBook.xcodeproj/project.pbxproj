@@ -51,6 +51,10 @@
 		18E24F112418F6F000CD0EF5 /* NSString+Shadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E24F0F2418F6F000CD0EF5 /* NSString+Shadow.m */; };
 		18E24F132418F7F400CD0EF5 /* MicrosoftYaHei-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18E24F122418F7F400CD0EF5 /* MicrosoftYaHei-Bold.ttf */; };
 		18E24F16241909FD00CD0EF5 /* GBMainTableHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E24F15241909FD00CD0EF5 /* GBMainTableHeadView.m */; };
+		18E24F2024190E2900CD0EF5 /* TYPageControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E24F1B24190E2900CD0EF5 /* TYPageControl.m */; };
+		18E24F2124190E2900CD0EF5 /* TYCyclePagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E24F1C24190E2900CD0EF5 /* TYCyclePagerView.m */; };
+		18E24F2224190E2900CD0EF5 /* TYCyclePagerTransformLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E24F1D24190E2900CD0EF5 /* TYCyclePagerTransformLayout.m */; };
+		18E24F2624190F0000CD0EF5 /* ZJECyclePagerViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E24F2524190F0000CD0EF5 /* ZJECyclePagerViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -145,6 +149,14 @@
 		18E24F122418F7F400CD0EF5 /* MicrosoftYaHei-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MicrosoftYaHei-Bold.ttf"; sourceTree = "<group>"; };
 		18E24F14241909FD00CD0EF5 /* GBMainTableHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBMainTableHeadView.h; sourceTree = "<group>"; };
 		18E24F15241909FD00CD0EF5 /* GBMainTableHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBMainTableHeadView.m; sourceTree = "<group>"; };
+		18E24F1824190E2900CD0EF5 /* TYCyclePagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCyclePagerView.h; sourceTree = "<group>"; };
+		18E24F1924190E2900CD0EF5 /* ZJECyclePagerViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJECyclePagerViewCell.h; sourceTree = "<group>"; };
+		18E24F1A24190E2900CD0EF5 /* TYCyclePagerTransformLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYCyclePagerTransformLayout.h; sourceTree = "<group>"; };
+		18E24F1B24190E2900CD0EF5 /* TYPageControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYPageControl.m; sourceTree = "<group>"; };
+		18E24F1C24190E2900CD0EF5 /* TYCyclePagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCyclePagerView.m; sourceTree = "<group>"; };
+		18E24F1D24190E2900CD0EF5 /* TYCyclePagerTransformLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYCyclePagerTransformLayout.m; sourceTree = "<group>"; };
+		18E24F1F24190E2900CD0EF5 /* TYPageControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYPageControl.h; sourceTree = "<group>"; };
+		18E24F2524190F0000CD0EF5 /* ZJECyclePagerViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZJECyclePagerViewCell.m; path = ../../../../demo/hongxin/hongxin/Third/TYCyclePagerView/ZJECyclePagerViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +237,7 @@
 		18E24DFE2418BB7400CD0EF5 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				18E24F1724190E2900CD0EF5 /* TYCyclePagerView */,
 				18E24F0B2418F5CF00CD0EF5 /* YAWaveView.h */,
 				18E24F0C2418F5D000CD0EF5 /* YAWaveView.m */,
 				18E24E9B2418D8E400CD0EF5 /* MJRefresh */,
@@ -511,6 +524,21 @@
 			path = Tools;
 			sourceTree = "<group>";
 		};
+		18E24F1724190E2900CD0EF5 /* TYCyclePagerView */ = {
+			isa = PBXGroup;
+			children = (
+				18E24F1924190E2900CD0EF5 /* ZJECyclePagerViewCell.h */,
+				18E24F2524190F0000CD0EF5 /* ZJECyclePagerViewCell.m */,
+				18E24F1824190E2900CD0EF5 /* TYCyclePagerView.h */,
+				18E24F1A24190E2900CD0EF5 /* TYCyclePagerTransformLayout.h */,
+				18E24F1B24190E2900CD0EF5 /* TYPageControl.m */,
+				18E24F1C24190E2900CD0EF5 /* TYCyclePagerView.m */,
+				18E24F1D24190E2900CD0EF5 /* TYCyclePagerTransformLayout.m */,
+				18E24F1F24190E2900CD0EF5 /* TYPageControl.h */,
+			);
+			path = TYCyclePagerView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -589,6 +617,8 @@
 				18E24DFD2418BB7200CD0EF5 /* AxcAE_TabBarItem.m in Sources */,
 				18E24E112418C20400CD0EF5 /* GBBaseViewController.m in Sources */,
 				18E24E202418C2A600CD0EF5 /* GBMainViewController.m in Sources */,
+				18E24F2124190E2900CD0EF5 /* TYCyclePagerView.m in Sources */,
+				18E24F2024190E2900CD0EF5 /* TYPageControl.m in Sources */,
 				18E24EDC2418D8E400CD0EF5 /* MJRefreshAutoFooter.m in Sources */,
 				18E24ECF2418D8E400CD0EF5 /* UIView+MJExtension.m in Sources */,
 				18E24ECB2418D8E400CD0EF5 /* MJRefreshConst.m in Sources */,
@@ -614,8 +644,10 @@
 				18E24E1D2418C29E00CD0EF5 /* GBSetViewController.m in Sources */,
 				18E24E302418C54E00CD0EF5 /* UIView+SDAutoLayout.m in Sources */,
 				18E24EDD2418D8E400CD0EF5 /* MJRefreshComponent.m in Sources */,
+				18E24F2624190F0000CD0EF5 /* ZJECyclePagerViewCell.m in Sources */,
 				18E24F112418F6F000CD0EF5 /* NSString+Shadow.m in Sources */,
 				18E24ED12418D8E400CD0EF5 /* MJRefreshBackStateFooter.m in Sources */,
+				18E24F2224190E2900CD0EF5 /* TYCyclePagerTransformLayout.m in Sources */,
 				18E24ED42418D8E400CD0EF5 /* MJRefreshAutoGifFooter.m in Sources */,
 				18E24ED22418D8E400CD0EF5 /* MJRefreshBackNormalFooter.m in Sources */,
 				18E24ED52418D8E400CD0EF5 /* MJRefreshAutoNormalFooter.m in Sources */,
