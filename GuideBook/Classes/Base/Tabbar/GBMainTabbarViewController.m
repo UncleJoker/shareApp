@@ -30,9 +30,9 @@
     GBBaseNaviViewController *setVC = [[GBBaseNaviViewController alloc] initWithRootViewController:[GBSetViewController new]];
     
     NSArray <NSDictionary *>*VCArray = @[
-    @{@"vc":mainVC,@"normalImg":@"main_normal",@"selectImg":@"main_select",@"itemTitle":@"首页"},
-    @{@"vc":[UIViewController new],@"normalImg":@"",@"selectImg":@"",@"itemTitle":@"发布"},
-    @{@"vc":setVC,@"normalImg":@"set_normal",@"selectImg":@"set_select",@"itemTitle":@"消息"}];
+    @{@"vc":mainVC,@"normalImg":@"main_normal",@"selectImg":@"main_select",@"itemTitle":@"训练项目"},
+    @{@"vc":[UIViewController new],@"normalImg":@"",@"selectImg":@"",@"itemTitle":@"新增"},
+    @{@"vc":setVC,@"normalImg":@"set_normal",@"selectImg":@"set_select",@"itemTitle":@"设置中心"}];
     
         NSMutableArray *tabBarConfs = @[].mutableCopy;
         NSMutableArray *tabBarVCs = @[].mutableCopy;
@@ -79,7 +79,7 @@
         self.axcTabBar = [AxcAE_TabBar new] ;
         self.axcTabBar.tabBarConfig = tabBarConfs;
         self.axcTabBar.delegate = self;
-        self.axcTabBar.backgroundColor = [UIColor cyanColor];
+        self.axcTabBar.backgroundColor = HexColor(@"00CC00");
         [self.tabBar addSubview:self.axcTabBar];
         [self addLayoutTabBar];
     
@@ -92,7 +92,12 @@
 
 
 - (void)axcAE_TabBar:(AxcAE_TabBar *)tabbar selectIndex:(NSInteger)index{
-    
+    if (index != 1) {
+          [self setSelectedIndex:index];
+          
+      }else{
+          
+      }
 }
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex{

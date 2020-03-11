@@ -17,7 +17,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    [self resetUI];
+    
+    
     // Do any additional setup after loading the view.
+}
+
+- (void)resetUI{
+    
+    [self.view setBackgroundColor:Commom_BackgroundColor];
+    UIImage *bgImage = [GBMethodTools createImageWithColor:HexColor(@"#00CC00")];
+    UINavigationBar *navBar = self.navigationController.navigationBar;
+    [navBar setBackgroundImage:bgImage forBarPosition:UIBarPositionTopAttached barMetrics:UIBarMetricsDefault];
+    [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName:HexColor(@"#000000")}];
+    [navBar setTintColor:[UIColor blackColor]];
 }
 
 /*

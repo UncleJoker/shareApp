@@ -46,6 +46,10 @@
 		18E24F032418DA6800CD0EF5 /* GBTabbarC.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E24EFD2418DA6700CD0EF5 /* GBTabbarC.m */; };
 		18E24F042418DA6800CD0EF5 /* GBMainTabbarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E24EFF2418DA6800CD0EF5 /* GBMainTabbarViewController.m */; };
 		18E24F052418DA6800CD0EF5 /* GBAddButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E24F002418DA6800CD0EF5 /* GBAddButton.m */; };
+		18E24F092418F01600CD0EF5 /* GBMethodTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E24F082418F01600CD0EF5 /* GBMethodTools.m */; };
+		18E24F0D2418F5D000CD0EF5 /* YAWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E24F0C2418F5D000CD0EF5 /* YAWaveView.m */; };
+		18E24F112418F6F000CD0EF5 /* NSString+Shadow.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E24F0F2418F6F000CD0EF5 /* NSString+Shadow.m */; };
+		18E24F132418F7F400CD0EF5 /* MicrosoftYaHei-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 18E24F122418F7F400CD0EF5 /* MicrosoftYaHei-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +133,15 @@
 		18E24F002418DA6800CD0EF5 /* GBAddButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GBAddButton.m; sourceTree = "<group>"; };
 		18E24F012418DA6800CD0EF5 /* GBMainTabbarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBMainTabbarViewController.h; sourceTree = "<group>"; };
 		18E24F022418DA6800CD0EF5 /* GBTabbarC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GBTabbarC.h; sourceTree = "<group>"; };
+		18E24F072418F01600CD0EF5 /* GBMethodTools.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GBMethodTools.h; sourceTree = "<group>"; };
+		18E24F082418F01600CD0EF5 /* GBMethodTools.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GBMethodTools.m; sourceTree = "<group>"; };
+		18E24F0A2418F25800CD0EF5 /* Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		18E24F0B2418F5CF00CD0EF5 /* YAWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YAWaveView.h; sourceTree = "<group>"; };
+		18E24F0C2418F5D000CD0EF5 /* YAWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YAWaveView.m; sourceTree = "<group>"; };
+		18E24F0E2418F68600CD0EF5 /* Font.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Font.h; sourceTree = "<group>"; };
+		18E24F0F2418F6F000CD0EF5 /* NSString+Shadow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Shadow.m"; sourceTree = "<group>"; };
+		18E24F102418F6F000CD0EF5 /* NSString+Shadow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Shadow.h"; sourceTree = "<group>"; };
+		18E24F122418F7F400CD0EF5 /* MicrosoftYaHei-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MicrosoftYaHei-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				18E24DE924189B6B00CD0EF5 /* Info.plist */,
+				18E24F062418ED9C00CD0EF5 /* Tools */,
 				18E24DFE2418BB7400CD0EF5 /* Third */,
 				18E24DFF2418BB7D00CD0EF5 /* Category */,
 				18E24E242418C3F100CD0EF5 /* Macro */,
@@ -208,6 +222,8 @@
 		18E24DFE2418BB7400CD0EF5 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				18E24F0B2418F5CF00CD0EF5 /* YAWaveView.h */,
+				18E24F0C2418F5D000CD0EF5 /* YAWaveView.m */,
 				18E24E9B2418D8E400CD0EF5 /* MJRefresh */,
 				18E24E2A2418C54E00CD0EF5 /* SDAutoLayout */,
 				18E24DF32418BB7200CD0EF5 /* AxcAE_TabBar */,
@@ -218,6 +234,8 @@
 		18E24DFF2418BB7D00CD0EF5 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				18E24F102418F6F000CD0EF5 /* NSString+Shadow.h */,
+				18E24F0F2418F6F000CD0EF5 /* NSString+Shadow.m */,
 				18E24E282418C51F00CD0EF5 /* UIView+Frame.h */,
 				18E24E272418C51F00CD0EF5 /* UIView+Frame.m */,
 			);
@@ -227,10 +245,10 @@
 		18E24E002418BB9700CD0EF5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				18E24DF12418B0EC00CD0EF5 /* Main */,
 				18E24E022418BBCF00CD0EF5 /* Base */,
 				18E24E032418C0C000CD0EF5 /* Add */,
 				18E24DF22418B0FC00CD0EF5 /* Set */,
-				18E24DF12418B0EC00CD0EF5 /* Main */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -238,6 +256,7 @@
 		18E24E012418BBB300CD0EF5 /* SupportFile */ = {
 			isa = PBXGroup;
 			children = (
+				18E24F122418F7F400CD0EF5 /* MicrosoftYaHei-Bold.ttf */,
 				18E24DE124189B6900CD0EF5 /* Main.storyboard */,
 				18E24DE424189B6B00CD0EF5 /* Assets.xcassets */,
 				18E24DE624189B6B00CD0EF5 /* LaunchScreen.storyboard */,
@@ -365,6 +384,8 @@
 			children = (
 				18E24E252418C44800CD0EF5 /* PrefixHeader.pch */,
 				18E24E262418C49100CD0EF5 /* GBFrame.h */,
+				18E24F0E2418F68600CD0EF5 /* Font.h */,
+				18E24F0A2418F25800CD0EF5 /* Color.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -476,6 +497,15 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		18E24F062418ED9C00CD0EF5 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				18E24F072418F01600CD0EF5 /* GBMethodTools.h */,
+				18E24F082418F01600CD0EF5 /* GBMethodTools.m */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -536,6 +566,7 @@
 			files = (
 				18E24DE824189B6B00CD0EF5 /* LaunchScreen.storyboard in Resources */,
 				18E24DE524189B6B00CD0EF5 /* Assets.xcassets in Resources */,
+				18E24F132418F7F400CD0EF5 /* MicrosoftYaHei-Bold.ttf in Resources */,
 				18E24ECC2418D8E400CD0EF5 /* MJRefresh.bundle in Resources */,
 				18E24DE324189B6900CD0EF5 /* Main.storyboard in Resources */,
 			);
@@ -557,6 +588,7 @@
 				18E24ECF2418D8E400CD0EF5 /* UIView+MJExtension.m in Sources */,
 				18E24ECB2418D8E400CD0EF5 /* MJRefreshConst.m in Sources */,
 				18E24ECD2418D8E400CD0EF5 /* UIScrollView+MJExtension.m in Sources */,
+				18E24F092418F01600CD0EF5 /* GBMethodTools.m in Sources */,
 				18E24DFB2418BB7200CD0EF5 /* AxcAE_TabBarBadge.m in Sources */,
 				18E24DFC2418BB7200CD0EF5 /* AxcAE_TabBar.m in Sources */,
 				18E24ECE2418D8E400CD0EF5 /* NSBundle+MJRefresh.m in Sources */,
@@ -576,10 +608,12 @@
 				18E24E1D2418C29E00CD0EF5 /* GBSetViewController.m in Sources */,
 				18E24E302418C54E00CD0EF5 /* UIView+SDAutoLayout.m in Sources */,
 				18E24EDD2418D8E400CD0EF5 /* MJRefreshComponent.m in Sources */,
+				18E24F112418F6F000CD0EF5 /* NSString+Shadow.m in Sources */,
 				18E24ED12418D8E400CD0EF5 /* MJRefreshBackStateFooter.m in Sources */,
 				18E24ED42418D8E400CD0EF5 /* MJRefreshAutoGifFooter.m in Sources */,
 				18E24ED22418D8E400CD0EF5 /* MJRefreshBackNormalFooter.m in Sources */,
 				18E24ED52418D8E400CD0EF5 /* MJRefreshAutoNormalFooter.m in Sources */,
+				18E24F0D2418F5D000CD0EF5 /* YAWaveView.m in Sources */,
 				18E24ED82418D8E400CD0EF5 /* MJRefreshGifHeader.m in Sources */,
 				18E24ECA2418D8E400CD0EF5 /* UIScrollView+MJRefresh.m in Sources */,
 				18E24F032418DA6800CD0EF5 /* GBTabbarC.m in Sources */,

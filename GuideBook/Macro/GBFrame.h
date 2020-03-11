@@ -14,6 +14,6 @@
 #define GB_ScreenHeight ([[UIScreen mainScreen] bounds].size.height)
 
 #define GB_isIphonex (GB_ScreenHeight >= 812 ? YES : NO)
-
+#define NaviH (GB_ScreenHeight >= 812 ? 88 : 64)
 
 #endif /* GBFrame_h */

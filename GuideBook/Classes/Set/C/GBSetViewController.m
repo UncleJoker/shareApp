@@ -16,9 +16,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    [self.view setBackgroundColor:[UIColor yellowColor]];
+    [self setUI];
     // Do any additional setup after loading the view.
+}
+
+- (void)setUI{
+    self.navigationItem.title = @"设置中心";
+    
 }
 
 /*
