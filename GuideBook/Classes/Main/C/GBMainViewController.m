@@ -8,8 +8,9 @@
 
 #import "GBMainViewController.h"
 #import "GBMainTableHeadView.h"
+#import "GBMainTableViewCell.h"
 
-@interface GBMainViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface GBMainViewController ()<UITableViewDelegate,UITableViewDataSource,GBMainBtnDelegate>
 @property (nonatomic, strong) UITableView *list;
 @property (nonatomic, strong) GBMainTableHeadView *headView;
 @end
@@ -39,17 +40,33 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mainTableCell" forIndexPath:indexPath];
-    
-    cell.textLabel.text = @"222";
+    GBMainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"mainTableCell" forIndexPath:indexPath];
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 120;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
 }
+
+#pragma mark - btnDelegate
+
+- (void)tapCycleImageIndex:(NSInteger)tapIndex{
+    
+    
+}
+
+- (void)tapFunctionIndex:(NSInteger)selectIndex{
+    
+    
+    
+}
+
 
 #pragma mark - setters
 
@@ -58,14 +75,15 @@
         _list = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, GB_ScreenWidth, GB_ScreenHeight-NaviH) style:(UITableViewStylePlain)];
         [_list setDelegate:self];
         [_list setDataSource:self];
-        [_list registerClass:[UITableViewCell class] forCellReuseIdentifier:@"mainTableCell"];
+        [_list registerClass:[GBMainTableViewCell class] forCellReuseIdentifier:@"mainTableCell"];
     }
     return _list;
 }
 
 - (GBMainTableHeadView *)headView{
     if (!_headView) {
-        _headView = [[GBMainTableHeadView alloc] initWithFrame:CGRectMake(0, 0, GB_ScreenWidth, 300)];
+        _headView = [[GBMainTableHeadView alloc] initWithFrame:CGRectMake(0, 0, GB_ScreenWidth, 320)];
+        _headView.btnDelegate = self;
     }
     return _headView;
 }

@@ -10,8 +10,18 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface GBMainTableHeadView : UIView
+@protocol GBMainBtnDelegate <NSObject>
 
+// 轮播图点击事件
+- (void)tapCycleImageIndex:(NSInteger)tapIndex;
+
+// 功能按钮点击事件
+- (void)tapFunctionIndex:(NSInteger)selectIndex;
+
+@end
+
+@interface GBMainTableHeadView : UIView
+@property (nonatomic, weak) id<GBMainBtnDelegate> btnDelegate;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -23,6 +23,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
+//        [self setBackgroundColor:HexColor(@"345c07")];
         [self setView];
     }
     return self;
@@ -42,19 +43,36 @@
     .leftEqualToView(self.pagerView)
     .rightEqualToView(self.pagerView);
     
-    
-    CGFloat btnCount = 4;
+    NSArray *titleArr = @[@"简介",@"训练排行",@"教程",@"其他"];
     CGFloat btnHeight = 50;
-    CGFloat btnMargin = (GB_ScreenWidth-btnHeight*btnCount)/5;
+    CGFloat btnMargin = (GB_ScreenWidth-btnHeight*titleArr.count)/5;
     
-    for (int i = 0; i < btnCount; i ++) {
+    for (int i = 0; i < titleArr.count; i ++) {
         UIButton *tapBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         [tapBtn setTag:1000 + i];
         [tapBtn setImage:[UIImage imageNamed:[NSString stringWithFormat:@"tapBtn%d",i]] forState:(UIControlStateNormal)];
+        [tapBtn addTarget:self action:@selector(tapBtnAction:) forControlEvents:(UIControlEventTouchUpInside)];
         [self addSubview:tapBtn];
         tapBtn.sd_layout.leftSpaceToView(self, btnMargin+i*(btnHeight+btnMargin)).widthIs(btnHeight).topSpaceToView(self.pagerView, 20).heightIs(btnHeight);
+        
+        UILabel *titleLab = [UILabel new];
+        [titleLab setText:titleArr[i]];
+        [titleLab setFont:[UIFont systemFontOfSize:13]];
+        [titleLab setTextAlignment:(NSTextAlignmentCenter)];
+        [titleLab setTextColor:HexColor(@"#333333")];
+        [self addSubview:titleLab];
+        titleLab.sd_layout.centerXEqualToView(tapBtn).heightIs(15).topSpaceToView(tapBtn, 3);
+        [titleLab setSingleLineAutoResizeWithMaxWidth:btnHeight+btnMargin];
     }
 }
+
+- (void)tapBtnAction:(UIButton *)sender{
+    NSInteger selectIndex = sender.tag - 1000;
+    if ([_btnDelegate respondsToSelector:@selector(tapFunctionIndex:)]) {
+        [_btnDelegate tapFunctionIndex:selectIndex];
+    }
+}
+
 
 #pragma mark TYCyclePagerViewDataSource TYCyclePagerViewDelegate
 - (NSInteger)numberOfItemsInPagerView:(TYCyclePagerView *)pageView
@@ -84,7 +102,9 @@
 - (void)pagerView:(TYCyclePagerView *)pageView didSelectedItemCell:(__kindof UICollectionViewCell *)cell atIndex:(NSInteger)index
 {
     // 选中轮播图
-    
+    if ([_btnDelegate respondsToSelector:@selector(tapCycleImageIndex:)]) {
+        [_btnDelegate tapCycleImageIndex:index];
+    }
 }
 
 #pragma mark - setters and getters

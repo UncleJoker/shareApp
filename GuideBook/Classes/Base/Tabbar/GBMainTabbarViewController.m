@@ -11,6 +11,7 @@
 
 #import "GBMainViewController.h"
 #import "GBSetViewController.h"
+#import "GBAddViewController.h"
 
 @interface GBMainTabbarViewController ()<AxcAE_TabBarDelegate>
 
@@ -34,70 +35,59 @@
     @{@"vc":[UIViewController new],@"normalImg":@"",@"selectImg":@"",@"itemTitle":@"新增"},
     @{@"vc":setVC,@"normalImg":@"set_normal",@"selectImg":@"set_select",@"itemTitle":@"设置中心"}];
     
-        NSMutableArray *tabBarConfs = @[].mutableCopy;
-        NSMutableArray *tabBarVCs = @[].mutableCopy;
-        [VCArray enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            AxcAE_TabBarConfigModel *model = [AxcAE_TabBarConfigModel new];
-            model.itemTitle = [obj objectForKey:@"itemTitle"];
-            model.selectImageName = [obj objectForKey:@"selectImg"];
-            model.normalImageName = [obj objectForKey:@"normalImg"];
-            model.selectColor = [UIColor blackColor];
-            model.normalColor = [UIColor blackColor];
-            model.automaticHidden = YES;
-            
-            if (idx == 1 ) {
-                // 如果是中间的
-                // 设置凸出 矩形
-                model.bulgeStyle = AxcAE_TabBarConfigBulgeStyleSquare;
-                // 设置凸出高度
-                model.bulgeHeight = 20;
-                // 设置成图片文字展示
-                model.itemLayoutStyle = AxcAE_TabBarItemLayoutStyleTopPictureBottomTitle;
-                // 设置图片
-                model.selectImageName = @"add_highlight";
-                model.normalImageName = @"add_highlight";
-                model.selectBackgroundColor = model.normalBackgroundColor = [UIColor clearColor];
-                model.backgroundImageView.hidden = YES;
-                model.componentMargin = UIEdgeInsetsMake(0, 0, 0, 0 );
-                model.icomImgViewSize = CGSizeMake(self.tabBar.frame.size.width / 5, 50);
-                model.titleLabelSize = CGSizeMake(self.tabBar.frame.size.width / 5, 20);
-                model.pictureWordsMargin = 0;
-                model.titleLabel.font = [UIFont systemFontOfSize:11];
-                model.itemSize = CGSizeMake(self.tabBar.frame.size.width / 5 - 5.0 ,self.tabBar.frame.size.height + 20);
-            }else{
-                model.interactionEffectStyle = AxcAE_TabBarInteractionEffectStyleSpring;
-                model.selectBackgroundColor = [UIColor clearColor];
-                model.normalBackgroundColor = [UIColor clearColor];
-            }
-            UIViewController *vc = [obj objectForKey:@"vc"];
-            [tabBarVCs addObject:vc];
-            [tabBarConfs addObject:model];
-        }];
-        GBAddButton *gbAddButton = [GBAddButton new];
-        [self setValue:gbAddButton forKey:@"tabBar"];
-        self.viewControllers = tabBarVCs;
-        self.axcTabBar = [AxcAE_TabBar new] ;
-        self.axcTabBar.tabBarConfig = tabBarConfs;
-        self.axcTabBar.delegate = self;
-        self.axcTabBar.backgroundColor = HexColor(@"00CC00");
-        [self.tabBar addSubview:self.axcTabBar];
-        [self addLayoutTabBar];
-    
+    NSMutableArray *tabBarConfs = @[].mutableCopy;
+    NSMutableArray *tabBarVCs = @[].mutableCopy;
+    [VCArray enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        AxcAE_TabBarConfigModel *model = [AxcAE_TabBarConfigModel new];
+        model.itemTitle = [obj objectForKey:@"itemTitle"];
+        model.selectImageName = [obj objectForKey:@"selectImg"];
+        model.normalImageName = [obj objectForKey:@"normalImg"];
+        model.selectColor = [UIColor blackColor];
+        model.normalColor = [UIColor blackColor];
+        model.automaticHidden = YES;
+        
+        if (idx == 1 ) {
+            model.bulgeStyle = AxcAE_TabBarConfigBulgeStyleSquare;
+            model.bulgeHeight = 20;
+            model.itemLayoutStyle = AxcAE_TabBarItemLayoutStyleTopPictureBottomTitle;
+            model.selectImageName = @"add_highlight";
+            model.normalImageName = @"add_highlight";
+            model.selectBackgroundColor = model.normalBackgroundColor = [UIColor clearColor];
+            model.backgroundImageView.hidden = YES;
+            model.componentMargin = UIEdgeInsetsMake(0, 0, 0, 0 );
+            model.icomImgViewSize = CGSizeMake(self.tabBar.frame.size.width / 5, 50);
+            model.titleLabelSize = CGSizeMake(self.tabBar.frame.size.width / 5, 20);
+            model.pictureWordsMargin = 0;
+            model.titleLabel.font = [UIFont systemFontOfSize:11];
+            model.itemSize = CGSizeMake(self.tabBar.frame.size.width / 5 - 5.0 ,self.tabBar.frame.size.height + 20);
+        }else{
+            model.interactionEffectStyle = AxcAE_TabBarInteractionEffectStyleSpring;
+            model.selectBackgroundColor = [UIColor clearColor];
+            model.normalBackgroundColor = [UIColor clearColor];
+        }
+        UIViewController *vc = [obj objectForKey:@"vc"];
+        [tabBarVCs addObject:vc];
+        [tabBarConfs addObject:model];
+    }];
+    GBAddButton *gbAddButton = [GBAddButton new];
+    [self setValue:gbAddButton forKey:@"tabBar"];
+    self.viewControllers = tabBarVCs;
+    self.axcTabBar = [AxcAE_TabBar new] ;
+    self.axcTabBar.tabBarConfig = tabBarConfs;
+    self.axcTabBar.delegate = self;
+    self.axcTabBar.backgroundColor = HexColor(@"567237");
+    [self.tabBar addSubview:self.axcTabBar];
 }
 
-- (void)addLayoutTabBar{
-    // 使用重载viewDidLayoutSubviews实时计算坐标 （下边的 -viewDidLayoutSubviews 函数）
-    // 能兼容转屏时的自动布局
-}
-
-
+static NSInteger lastIdx = 0;
 - (void)axcAE_TabBar:(AxcAE_TabBar *)tabbar selectIndex:(NSInteger)index{
     if (index != 1) {
-          [self setSelectedIndex:index];
-          
-      }else{
-          
-      }
+        lastIdx = index;
+        [self setSelectedIndex:index];
+    }else{
+        [self.axcTabBar setSelectIndex:lastIdx WithAnimation:NO];
+        [self presentViewController:[GBAddViewController new] animated:YES completion:nil];
+    }
 }
 
 - (void)setSelectedIndex:(NSUInteger)selectedIndex{

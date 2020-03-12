@@ -27,10 +27,10 @@
 - (void)resetUI{
     
     [self.view setBackgroundColor:Commom_BackgroundColor];
-    UIImage *bgImage = [GBMethodTools createImageWithColor:HexColor(@"#00CC00")];
+    UIImage *bgImage = [GBMethodTools createImageWithColor:HexColor(@"#567237")];
     UINavigationBar *navBar = self.navigationController.navigationBar;
     [navBar setBackgroundImage:bgImage forBarPosition:UIBarPositionTopAttached barMetrics:UIBarMetricsDefault];
-    [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName:HexColor(@"#000000")}];
+    [navBar setTitleTextAttributes:@{NSForegroundColorAttributeName:HexColor(@"#EEEEEE")}];
     [navBar setTintColor:[UIColor blackColor]];
 }
 
