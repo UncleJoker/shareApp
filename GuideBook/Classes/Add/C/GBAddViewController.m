@@ -10,6 +10,7 @@
 #import "LMJDropdownMenu.h"
 #import "CXDatePickerView.h"
 #import "UIViewController+GBDismissKeyboard.h"
+#import "GBAddTrainModel.h"
 
 @interface GBAddViewController ()<LMJDropdownMenuDataSource,LMJDropdownMenuDelegate>
 
@@ -21,34 +22,45 @@
 
 @property (nonatomic, strong) UITextField *addressTF;// 地点输入
 
+@property (nonatomic, strong) UIImageView *trainGif;// 动态图
+
 @property (nonatomic, strong) UILabel *trduceLab;// 训练介绍
 
 @property (nonatomic, strong) UIButton *commitBtn;
 
 @property (nonatomic, strong) UIButton *closeBtn;
 
+@property (nonatomic, strong) NSMutableArray *trianArr;
+
+@property (nonatomic, strong) NSMutableArray *saveTrainArr;
+
+@property (nonatomic, assign) NSInteger selectIndex;
+
 @end
 
 @implementation GBAddViewController
 {
     LMJDropdownMenu * menu1;
-    NSArray * _menu1OptionTitles;
-    NSArray * _menu1OptionIcons;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.selectIndex = -1;
     [self setupForDismissKeyboard];
     [self setUI];
+    [self getData];
     // Do any additional setup after loading the view.
+}
+
+- (void)getData{
+    
+    NSDictionary *trainDic = [GBMethodTools readLocalFileWithName:TRainDataJSON];
+    [self.trianArr addObjectsFromArray:[trainDic valueForKey:@"TrainArr"]];
+    [menu1 reloadOptionsData];
 }
 
 - (void)setUI{
     
-    /* LMJDropdownMenu */
-    // ----------------------- menu1 ---------------------------
-    _menu1OptionTitles = @[@"控球训练",@"颠球训练",@"传球训练",@"停球训练",@"射门训练"];
-    _menu1OptionIcons = @[@"icon1",@"icon2",@"icon3",@"icon4",@"icon5"];
     menu1 = [[LMJDropdownMenu alloc] init];
     [menu1 setFrame:CGRectMake(self.view.centerX-60, 20, 120, 40)];
     menu1.dataSource = self;
@@ -87,14 +99,17 @@
     [self.backView addSubview:self.addressTF];
     self.addressTF.sd_layout.leftEqualToView(self.timeBtn).rightEqualToView(self.timeBtn).heightIs(35).topSpaceToView(self.timeBtn, 20);
     
+    [self.backView addSubview:self.trainGif];
+    self.trainGif.sd_layout.leftSpaceToView(self.backView, 40).topSpaceToView(self.trainImage, 20).rightSpaceToView(self.backView, 40);
+    
     [self.backView addSubview:self.trduceLab];
-    self.trduceLab.sd_layout.leftSpaceToView(self.backView, 10).rightSpaceToView(self.backView, 10).topSpaceToView(self.trainImage, 20).bottomSpaceToView(self.backView, 100);
+    self.trduceLab.sd_layout.leftSpaceToView(self.backView, 10).rightSpaceToView(self.backView, 10).topSpaceToView(self.trainGif, 20).bottomSpaceToView(self.backView, 100);
     
     [self.backView addSubview:self.commitBtn];
-    self.commitBtn.sd_layout.leftSpaceToView(self.backView, 20).heightIs(40).bottomSpaceToView(self.backView, 80).widthIs(GB_ScreenWidth/2-40);
+    self.commitBtn.sd_layout.leftSpaceToView(self.backView, 20).heightIs(40).bottomSpaceToView(self.backView, 60).widthIs(GB_ScreenWidth/2-40);
     
     [self.backView addSubview:self.closeBtn];
-    self.closeBtn.sd_layout.rightSpaceToView(self.backView, 20).heightIs(40).bottomSpaceToView(self.backView, 80).widthIs(GB_ScreenWidth/2-40);
+    self.closeBtn.sd_layout.rightSpaceToView(self.backView, 20).heightIs(40).bottomSpaceToView(self.backView, 60).widthIs(GB_ScreenWidth/2-40);
 }
 
 #pragma mark - action
@@ -116,6 +131,33 @@
 
 - (void)commitBtnAction{
     
+    if (self.selectIndex == -1) {
+        [LCProgressHUD showFailure:@"请选择训练项目"];
+        return;
+    }
+    
+    if ([self.timeBtn.titleLabel.text isEqualToString:@"选择时间"]) {
+        [LCProgressHUD showFailure:@"请选择训练时间"];
+        return;
+    }
+    
+    if ([self.addressTF.text isEqualToString:@""]) {
+        [LCProgressHUD showFailure:@"请输入训练场地"];
+        return;
+    }
+    
+    GBAddTrainModel *model = [GBAddTrainModel new];
+    model.trainDic = self.trianArr[self.selectIndex];
+    model.trainTitle = [self.trianArr[self.selectIndex] valueForKey:@"title"];
+    model.time = self.timeBtn.titleLabel.text;
+    model.trainAddress = self.addressTF.text;
+    
+    [self.saveTrainArr addObject:model];
+    [self.saveTrainArr bg_saveArrayWithName:SaveTrainName];
+    
+    [LCProgressHUD showSuccess:@"添加训练成功,请按时训练"];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:AddSunccessNotice object:nil userInfo:nil];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -126,36 +168,41 @@
 
 #pragma mark - LMJDropdownMenu DataSource
 - (NSUInteger)numberOfOptionsInDropdownMenu:(LMJDropdownMenu *)menu{
-    return _menu1OptionTitles.count;
+    return self.trianArr.count;
 }
 - (CGFloat)dropdownMenu:(LMJDropdownMenu *)menu heightForOptionAtIndex:(NSUInteger)index{
     return 40;
 }
 - (NSString *)dropdownMenu:(LMJDropdownMenu *)menu titleForOptionAtIndex:(NSUInteger)index{
-    return _menu1OptionTitles[index];
+    return [self.trianArr[index] valueForKey:@"title"];
 }
+
 - (UIImage *)dropdownMenu:(LMJDropdownMenu *)menu iconForOptionAtIndex:(NSUInteger)index{
-    return [UIImage imageNamed:_menu1OptionIcons[index]];
+    return [UIImage imageNamed:@"football_icon"];
 }
+
 #pragma mark - LMJDropdownMenu Delegate
 - (void)dropdownMenu:(LMJDropdownMenu *)menu didSelectOptionAtIndex:(NSUInteger)index optionTitle:(NSString *)title{
-    NSLog(@"你选择了(you selected)：menu1，index: %ld - title: %@", index, title);
+    self.selectIndex = index;
+    [self.trduceLab setText:[self.trianArr[index] valueForKey:@"troduce"]];
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:[self.trianArr[index] valueForKey:@"gif"] ofType:@"gif"];
+    NSURL * url = [[NSURL alloc]initFileURLWithPath:imagePath];
+    [self.trainGif yh_setImage:url];
 }
 
 - (void)dropdownMenuWillShow:(LMJDropdownMenu *)menu{
-    NSLog(@"--将要显示(will appear)--menu1");
+    
 }
 - (void)dropdownMenuDidShow:(LMJDropdownMenu *)menu{
-    NSLog(@"--已经显示(did appear)--menu1");
+    
 }
 
 - (void)dropdownMenuWillHidden:(LMJDropdownMenu *)menu{
-    NSLog(@"--将要隐藏(will disappear)--menu1");
+    
 }
 - (void)dropdownMenuDidHidden:(LMJDropdownMenu *)menu{
-    NSLog(@"--已经隐藏(did disappear)--menu1");
+    
 }
-
 #pragma mark -- setters
 
 - (UIImageView *)trainImage{
@@ -201,10 +248,19 @@
     return _addressTF;
 }
 
+
+- (UIImageView *)trainGif{
+    if (!_trainGif) {
+        _trainGif = [[UIImageView alloc] init];
+    }
+    return _trainGif;
+}
+
+
 - (UILabel *)trduceLab{
     if (!_trduceLab) {
         _trduceLab = [UILabel new];
-        [_trduceLab setText:@"熟练了以后我们可以继续挑战，将球颠起到头以上的高度，然后接住正常低位颠几次之后再次颠起过头部。即使你已经到了中等水平，每天也可以花五分钟时间进行训练，把这些内容融合在一周甚至一个月的训练中是非常必要的。现在的训练更结构化一些，因为毕竟最终我们是要运用带球技巧的，所以节奏感非常重要，就像这样从左到右，从右到左，内侧外侧，内侧外侧。你知道该怎么做，训练时姿势要正确，速度要快。"];
+        [_trduceLab setText:@"请选择一个训练项目,此处将会显示训练要求与技巧!"];
         _trduceLab.numberOfLines = 0;
         [_trduceLab setFont:[UIFont systemFontOfSize:16]];
         _trduceLab.textColor =  HexColor(@"FFFFFF");
@@ -234,6 +290,20 @@
         [_closeBtn addTarget:self action:@selector(closeBtnAction) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _closeBtn;
+}
+
+- (NSMutableArray *)trianArr{
+    if (!_trianArr){
+        _trianArr = [NSMutableArray array];
+    }
+    return _trianArr;
+}
+
+- (NSMutableArray *)saveTrainArr{
+    if (!_saveTrainArr){
+        _saveTrainArr = [NSMutableArray array];
+    }
+    return _saveTrainArr;
 }
 
 /*

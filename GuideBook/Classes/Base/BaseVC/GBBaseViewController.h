@@ -11,6 +11,15 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface GBBaseViewController : UIViewController
+/**
+ *   *  根据标题navigationRightItem
+ *
+ *  @param title  title description
+ *  @param target target description
+ *  @param action action description
+ */
+- (void)setNavigationRightItemWithTitle:(NSString *)title target:(id)target action:(SEL)action;
+
 
 @end
 

@@ -10,6 +10,8 @@
 #import "TYCyclePagerView.h"
 #import "TYPageControl.h"
 #import "ZJECyclePagerViewCell.h"
+#import "GBAddTrainModel.h"
+
 @interface GBMainTableHeadView ()<TYCyclePagerViewDataSource, TYCyclePagerViewDelegate>
 
 @property (nonatomic, strong) TYCyclePagerView *pagerView;
@@ -23,7 +25,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame{
     if (self = [super initWithFrame:frame]) {
-//        [self setBackgroundColor:HexColor(@"345c07")];
         [self setView];
     }
     return self;

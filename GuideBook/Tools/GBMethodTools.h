@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (UIImage *) createImageWithColor: (UIColor *) color;
 
++ (NSDictionary *)readLocalFileWithName:(NSString *)name;
+
 @end
 
 NS_ASSUME_NONNULL_END

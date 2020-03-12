@@ -42,8 +42,8 @@
         model.itemTitle = [obj objectForKey:@"itemTitle"];
         model.selectImageName = [obj objectForKey:@"selectImg"];
         model.normalImageName = [obj objectForKey:@"normalImg"];
-        model.selectColor = [UIColor blackColor];
-        model.normalColor = [UIColor blackColor];
+        model.selectColor = HexColor(@"1296db");
+        model.normalColor = [UIColor whiteColor];
         model.automaticHidden = YES;
         
         if (idx == 1 ) {
