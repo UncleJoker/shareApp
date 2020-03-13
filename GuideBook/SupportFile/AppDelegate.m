@@ -25,11 +25,7 @@
     [self.window makeKeyAndVisible];
     GBMainTabbarViewController *rootViewController = [[GBMainTabbarViewController alloc] init];
     [self.window setRootViewController:rootViewController];
-    
     return YES;
 }
-
-
-
 
 @end

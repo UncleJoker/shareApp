@@ -75,7 +75,7 @@
     self.axcTabBar = [AxcAE_TabBar new] ;
     self.axcTabBar.tabBarConfig = tabBarConfs;
     self.axcTabBar.delegate = self;
-    self.axcTabBar.backgroundColor = HexColor(@"567237");
+    self.axcTabBar.backgroundColor = Main_BackGroundColor;
     [self.tabBar addSubview:self.axcTabBar];
 }
 

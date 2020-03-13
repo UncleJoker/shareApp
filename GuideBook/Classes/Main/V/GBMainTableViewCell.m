@@ -19,7 +19,7 @@
                     reuseIdentifier:reuseIdentifier]) {
         self.layer.cornerRadius = 8;
         self.layer.masksToBounds = YES;
-        [self.contentView setBackgroundColor:HexColor(@"345c07")];
+        [self.contentView setBackgroundColor:HexColor(@"33CCFF")];
         [self setView];
     }
     return self;
@@ -39,7 +39,7 @@
         titleLab = [UILabel new];
         [titleLab setTextAlignment:(NSTextAlignmentCenter)];
         [titleLab setFont:[UIFont systemFontOfSize:16]];
-        [titleLab setTextColor:HexColor(@"FFFFFF")];
+        [titleLab setTextColor:Main_TitleColor];
         [titleLab setBackgroundColor:[UIColor clearColor]];
         [self.contentView addSubview:titleLab];
         titleLab.sd_layout.leftSpaceToView(cellImage, 10).topSpaceToView(self.contentView, 20).heightIs(18).rightSpaceToView(self.contentView, 20);
@@ -48,7 +48,7 @@
     if (!troduceLab) {
         troduceLab = [UILabel new];
         [troduceLab setFont:[UIFont systemFontOfSize:14]];
-        [troduceLab setTextColor:HexColor(@"DDDDDD")];
+        [troduceLab setTextColor:Main_ContentColor];
         [troduceLab setBackgroundColor:[UIColor clearColor]];
         [troduceLab setNumberOfLines:3];
         [self.contentView addSubview:troduceLab];

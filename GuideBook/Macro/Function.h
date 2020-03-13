@@ -23,6 +23,9 @@
 #define RankTrainJSON @"RankTrain"
 #define SaveTrainName @"SaveTrainArr"
 #define AddSunccessNotice @"SaveSuccess"
+#define TrainNumbers @"TrainNumbers"
+#define UserName @"userName"
+#define UserSaying @"userSaying"
 
 #define WEAKSELF(weakSelf)  __weak __typeof(self)weakSelf = self;
 

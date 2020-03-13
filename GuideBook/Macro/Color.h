@@ -17,4 +17,7 @@
 
 #define Main_BackGroundColor HexColor(@"#567237")
 
+#define Main_TitleColor HexColor(@"333333")
+#define Main_ContentColor HexColor(@"888888")
+
 #endif /* Color_h */

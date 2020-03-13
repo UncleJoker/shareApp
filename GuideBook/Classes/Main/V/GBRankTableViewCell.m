@@ -19,7 +19,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         backView = [UIView new];
-        [backView setBackgroundColor:Main_BackGroundColor];
+        [backView setBackgroundColor:HexColor(@"33CCFF")];
         backView.layer.cornerRadius = 8;
         backView.layer.masksToBounds = YES;
         [self.contentView addSubview:backView];
@@ -43,7 +43,7 @@
         titleLab = [UILabel new];
         [titleLab setFont:[UIFont systemFontOfSize:16 weight:(UIFontWeightBold)]];
         [titleLab setTextAlignment:(NSTextAlignmentCenter)];
-        [titleLab setTextColor:HexColor(@"FFFFFF")];
+        [titleLab setTextColor:Main_TitleColor];
         [backView addSubview:titleLab];
         titleLab.sd_layout.leftSpaceToView(cellImage, 20).rightSpaceToView(backView, 20).topSpaceToView(backView, 15).heightIs(18);
     }
@@ -52,7 +52,7 @@
         troduceLab = [UILabel new];
         troduceLab.numberOfLines = 0;
         [troduceLab setFont:[UIFont systemFontOfSize:13 weight:(UIFontWeightMedium)]];
-        [troduceLab setTextColor:HexColor(@"EEEEEE")];
+        [troduceLab setTextColor:Main_ContentColor];
         [backView addSubview:troduceLab];
         troduceLab.sd_layout.leftSpaceToView(cellImage, 20).rightSpaceToView(backView, 20).topSpaceToView(titleLab, 10).bottomSpaceToView(backView, 10);
     }
@@ -63,7 +63,6 @@
     [titleLab setText:[dataDic valueForKey:@"trainTitle"]];
     [troduceLab setText:[dataDic valueForKey:@"trainTroduce"]];
 }
-
 
 - (void)awakeFromNib {
     [super awakeFromNib];

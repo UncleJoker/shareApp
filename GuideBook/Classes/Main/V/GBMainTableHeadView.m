@@ -60,7 +60,7 @@
         [titleLab setText:titleArr[i]];
         [titleLab setFont:[UIFont systemFontOfSize:13]];
         [titleLab setTextAlignment:(NSTextAlignmentCenter)];
-        [titleLab setTextColor:HexColor(@"#333333")];
+        [titleLab setTextColor:Main_TitleColor];
         [self addSubview:titleLab];
         titleLab.sd_layout.centerXEqualToView(tapBtn).heightIs(15).topSpaceToView(tapBtn, 3);
         [titleLab setSingleLineAutoResizeWithMaxWidth:btnHeight+btnMargin];

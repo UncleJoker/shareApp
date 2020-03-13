@@ -9,7 +9,6 @@
 #import "GBAddViewController.h"
 #import "LMJDropdownMenu.h"
 #import "CXDatePickerView.h"
-#import "UIViewController+GBDismissKeyboard.h"
 #import "GBAddTrainModel.h"
 
 @interface GBAddViewController ()<LMJDropdownMenuDataSource,LMJDropdownMenuDelegate>
@@ -230,7 +229,7 @@
         _timeBtn.layer.cornerRadius = 5;
         _timeBtn.backgroundColor = [UIColor whiteColor];
         [_timeBtn setTitle:@"选择时间" forState:UIControlStateNormal];
-        [_timeBtn setTitleColor:HexColor(@"333333") forState:(UIControlStateNormal)];
+        [_timeBtn setTitleColor:Main_TitleColor forState:(UIControlStateNormal)];
         [_timeBtn addTarget:self action:@selector(selectAction:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _timeBtn;
@@ -272,7 +271,7 @@
     if (!_commitBtn) {
         _commitBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         [_commitBtn setBackgroundColor:[UIColor whiteColor]];
-        [_commitBtn setTitleColor:HexColor(@"333333") forState:(UIControlStateNormal)];
+        [_commitBtn setTitleColor:Main_TitleColor forState:(UIControlStateNormal)];
         [_commitBtn setTitle:@"确定" forState:(UIControlStateNormal)];
         _commitBtn.layer.cornerRadius = 8;
         [_commitBtn addTarget:self action:@selector(commitBtnAction) forControlEvents:(UIControlEventTouchUpInside)];
@@ -284,7 +283,7 @@
     if (!_closeBtn) {
         _closeBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         [_closeBtn setBackgroundColor:[UIColor whiteColor]];
-        [_closeBtn setTitleColor:HexColor(@"333333") forState:(UIControlStateNormal)];
+        [_closeBtn setTitleColor:Main_TitleColor forState:(UIControlStateNormal)];
         [_closeBtn setTitle:@"取消" forState:(UIControlStateNormal)];
         _closeBtn.layer.cornerRadius = 8;
         [_closeBtn addTarget:self action:@selector(closeBtnAction) forControlEvents:(UIControlEventTouchUpInside)];

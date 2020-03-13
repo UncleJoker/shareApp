@@ -36,7 +36,7 @@
     
     titleLab = [UILabel new];
     [titleLab setText:@"足球 (Football)"];
-    [titleLab setTextColor:HexColor(@"333333")];
+    [titleLab setTextColor:Main_TitleColor];
     [titleLab setFont:[UIFont systemFontOfSize:18 weight:(UIFontWeightBold)]];
     [self.view addSubview:titleLab];
     titleLab.sd_layout.centerXEqualToView(self.view).topSpaceToView(footImage, 15).heightIs(25);

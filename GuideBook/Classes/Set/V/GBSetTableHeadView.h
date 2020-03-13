@@ -18,6 +18,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface GBSetTableHeadView : UIView
 @property (nonatomic, strong) id<HeadViewDelegate> headDelegate;
+
+@property (nonatomic, strong) UIImage *avatar;
+
+- (void)reloadHeadData;
+
 @end
 
 NS_ASSUME_NONNULL_END

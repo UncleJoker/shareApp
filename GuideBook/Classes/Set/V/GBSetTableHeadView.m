@@ -36,8 +36,7 @@
     
     if (!nameLab) {
         nameLab = [UILabel new];
-        [nameLab setText:@"足球先生"];
-        [nameLab setTextColor:HexColor(@"333333")];
+        [nameLab setTextColor:Main_TitleColor];
         [nameLab setFont:[UIFont systemFontOfSize:20 weight:(UIFontWeightBold)]];
         [nameLab setTextAlignment:(NSTextAlignmentCenter)];
         [self addSubview:nameLab];
@@ -46,8 +45,7 @@
     
     if (!sayingLab) {
         sayingLab = [UILabel new];
-        [sayingLab setText:@"有志者事竞争成"];
-        [sayingLab setTextColor:HexColor(@"888888")];
+        [sayingLab setTextColor:Main_ContentColor];
         [sayingLab setFont:[UIFont systemFontOfSize:16 weight:(UIFontWeightMedium)]];
         [sayingLab setTextAlignment:(NSTextAlignmentCenter)];
         [self addSubview:sayingLab];
@@ -58,7 +56,6 @@
     [lineView setBackgroundColor:Commom_BackgroundColor];
     [self addSubview:lineView];
     lineView.sd_layout.leftSpaceToView(self, 20).rightSpaceToView(self, 20).bottomSpaceToView(self, 2).heightIs(1);
-    
     
     if (!singelBtn) {
         singelBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
@@ -75,6 +72,16 @@
         [_headDelegate tapHeadView];
     }
 }
+
+- (void)setAvatar:(UIImage *)avatar{
+    [headImage setImage:avatar];
+}
+
+- (void)reloadHeadData{
+    [nameLab setText:[[NSUserDefaults standardUserDefaults] objectForKey:UserName] ? [[NSUserDefaults standardUserDefaults] objectForKey:UserName] : @"足球先生"];
+    [sayingLab setText:[[NSUserDefaults standardUserDefaults] objectForKey:UserSaying] ? [[NSUserDefaults standardUserDefaults] objectForKey:UserSaying] : @"编辑名言"];
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
