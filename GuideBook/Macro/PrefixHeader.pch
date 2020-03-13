@@ -21,6 +21,7 @@
 #import "UIImage+GIF.h"
 #import "UIImageView+GBAddGif.h"
 #import "UIScrollView+EmptyDataSet.h"
+#import "UITableView+SDAutoTableViewCellHeight.h"
 #import "UIViewController+GBDismissKeyboard.h"
 #import "LCProgressHUD.h"
 #import "MJRefresh.h"

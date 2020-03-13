@@ -52,7 +52,6 @@
 }
 
 - (void)getData{
-    
     NSDictionary *trainDic = [GBMethodTools readLocalFileWithName:TRainDataJSON];
     [self.trianArr addObjectsFromArray:[trainDic valueForKey:@"TrainArr"]];
     [menu1 reloadOptionsData];
@@ -113,6 +112,7 @@
 
 #pragma mark - action
 - (void)selectAction:(UIButton *)sender{
+    [self.addressTF resignFirstResponder];
     CXDatePickerView *datepicker = [[CXDatePickerView alloc] initWithDateStyle:CXDateStyleShowYearMonthDayHourMinute CompleteBlock:^(NSDate *selectDate) {
         NSString *dateString = [selectDate stringWithFormat:@"yyyy-MM-dd HH:mm"];
         [sender setTitle:dateString forState:UIControlStateNormal];
@@ -150,6 +150,7 @@
     model.trainTitle = [self.trianArr[self.selectIndex] valueForKey:@"title"];
     model.time = self.timeBtn.titleLabel.text;
     model.trainAddress = self.addressTF.text;
+    model.isFinish = NO;
     
     [self.saveTrainArr addObject:model];
     [self.saveTrainArr bg_saveArrayWithName:SaveTrainName];

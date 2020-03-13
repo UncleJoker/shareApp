@@ -9,17 +9,23 @@
 #import "GBMainTableViewCell.h"
 
 @implementation GBMainTableViewCell{
+    UIView *backView;
     UIImageView *cellImage;
     UILabel *titleLab;
+    UIImageView *statuImg;// 完成状态
     UILabel *troduceLab;
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style
                     reuseIdentifier:reuseIdentifier]) {
-        self.layer.cornerRadius = 8;
-        self.layer.masksToBounds = YES;
-        [self.contentView setBackgroundColor:HexColor(@"33CCFF")];
+        [self.contentView setBackgroundColor:Commom_BackgroundColor];
+        backView = [UIView new];
+        [backView setBackgroundColor:[UIColor whiteColor]];
+        backView.layer.cornerRadius = 8;
+        backView.layer.masksToBounds = YES;
+        [self.contentView addSubview:backView];
+        backView.sd_layout.spaceToSuperView(UIEdgeInsetsMake(10, 10, 10, 10));
         [self setView];
     }
     return self;
@@ -31,18 +37,24 @@
         [cellImage setContentMode:(UIViewContentModeScaleToFill)];
         cellImage.layer.cornerRadius = 4;
         cellImage.layer.masksToBounds = YES;
-        [self.contentView addSubview:cellImage];
-        cellImage.sd_layout.leftSpaceToView(self.contentView, 10).topSpaceToView(self.contentView, 10).bottomSpaceToView(self.contentView, 10).widthEqualToHeight();
+        [backView addSubview:cellImage];
+        cellImage.sd_layout.leftSpaceToView(backView, 10).topSpaceToView(backView, 10).bottomSpaceToView(backView, 10).widthEqualToHeight();
     }
     
     if (!titleLab) {
         titleLab = [UILabel new];
-        [titleLab setTextAlignment:(NSTextAlignmentCenter)];
         [titleLab setFont:[UIFont systemFontOfSize:16]];
         [titleLab setTextColor:Main_TitleColor];
         [titleLab setBackgroundColor:[UIColor clearColor]];
-        [self.contentView addSubview:titleLab];
-        titleLab.sd_layout.leftSpaceToView(cellImage, 10).topSpaceToView(self.contentView, 20).heightIs(18).rightSpaceToView(self.contentView, 20);
+        [backView addSubview:titleLab];
+        titleLab.sd_layout.leftSpaceToView(cellImage, 10).topSpaceToView(backView, 15).heightIs(18);
+        [titleLab setSingleLineAutoResizeWithMaxWidth:299];
+    }
+    
+    if (!statuImg) {
+        statuImg = [UIImageView new];
+        [backView addSubview:statuImg];
+        statuImg.sd_layout.rightSpaceToView(backView, 20).heightIs(20).widthEqualToHeight().centerYEqualToView(titleLab);
     }
     
     if (!troduceLab) {
@@ -51,8 +63,8 @@
         [troduceLab setTextColor:Main_ContentColor];
         [troduceLab setBackgroundColor:[UIColor clearColor]];
         [troduceLab setNumberOfLines:3];
-        [self.contentView addSubview:troduceLab];
-        troduceLab.sd_layout.leftEqualToView(titleLab).rightEqualToView(titleLab).topSpaceToView(titleLab, 10).bottomSpaceToView(self.contentView, 20);
+        [backView addSubview:troduceLab];
+        troduceLab.sd_layout.leftEqualToView(titleLab).rightSpaceToView(backView, 20).topSpaceToView(titleLab, 5).bottomSpaceToView(backView, 10);
     }
 }
 
@@ -63,6 +75,7 @@
         [titleLab setText:[item.trainDic valueForKey:@"title"]];
         [cellImage setImage:[UIImage imageNamed:[item.trainDic valueForKey:@"image"]]];
         [troduceLab setText:[item.trainDic valueForKey:@"troduce"]];
+        [statuImg setImage:IMG(item.isFinish ? @"complete_icon" : @"no_complete")];
     }
 }
 

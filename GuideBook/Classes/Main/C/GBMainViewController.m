@@ -14,6 +14,8 @@
 #import "GBRankingViewController.h"
 #import "GBTutorialViewController.h"
 #import "GBOtherViewController.h"
+#import "YLTableViewVC.h"
+#import "GBDetailViewController.h"
 
 @interface GBMainViewController ()<UITableViewDelegate,UITableViewDataSource,GBMainBtnDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
 
@@ -34,6 +36,11 @@
     [self addMJRefresh];
     [self getData];
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self getData];
 }
 
 - (void)getData{
@@ -86,8 +93,32 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    
-    
+    GBDetailViewController *detailVC = [GBDetailViewController new];
+    detailVC.model = self.dataArr[indexPath.row];
+    detailVC.selectIndex = indexPath.row;
+    [self.navigationController pushViewController:detailVC animated:YES];
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
+
+// 定义编辑样式
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+// 进入编辑模式，按下出现的编辑按钮后,进行删除操作
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [NSArray bg_deleteObjectWithName:SaveTrainName Index:indexPath.row];
+        [self getData];
+    }
+}
+
+// 修改编辑按钮文字
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除";
 }
 
 #pragma mark - btnDelegate
@@ -219,6 +250,7 @@
         _list = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, GB_ScreenWidth, GB_ScreenHeight-NaviH) style:(UITableViewStylePlain)];
         [_list setDelegate:self];
         [_list setDataSource:self];
+        [_list setBackgroundColor:Commom_BackgroundColor];
         [_list registerClass:[GBMainTableViewCell class] forCellReuseIdentifier:@"mainTableCell"];
         [_list setTableFooterView:[UIView new]];
     }

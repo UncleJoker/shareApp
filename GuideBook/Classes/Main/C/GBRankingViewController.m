@@ -74,6 +74,7 @@
         [_list setTableFooterView:[UIView new]];
         [_list setDelegate: self];
         [_list setDataSource:self];
+        [_list setBackgroundColor:Commom_BackgroundColor];
         [_list registerClass:[GBRankTableViewCell class] forCellReuseIdentifier:@"rankTableViewCell"];
     }
     return _list;

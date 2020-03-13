@@ -44,7 +44,7 @@
     .leftEqualToView(self.pagerView)
     .rightEqualToView(self.pagerView);
     
-    NSArray *titleArr = @[@"简介",@"训练排行",@"教程",@"其他"];
+    NSArray *titleArr = @[@"足球简介",@"训练排行",@"动态教程",@"其他"];
     CGFloat btnHeight = 50;
     CGFloat btnMargin = (GB_ScreenWidth-btnHeight*titleArr.count)/5;
     

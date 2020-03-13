@@ -16,6 +16,7 @@
 #import "GBAboutUSViewController.h"
 #import "CustomActivity.h"
 #import "GBEditUserInfoViewController.h"
+#import "GBAddTrainModel.h"
 
 @interface GBSetViewController ()<YAWaveViewDelegate,UITableViewDelegate,UITableViewDataSource,HeadViewDelegate,MFMailComposeViewControllerDelegate>
 
@@ -64,9 +65,17 @@
     if (!num) {
         return;
     }
-    NSInteger nowNum = [NSArray bg_countWithName:SaveTrainName];
-    CGFloat percent = [[NSNumber numberWithInteger:nowNum] floatValue]/[num floatValue];
-    self.waveLab.text = [NSString stringWithFormat:@"总共需要%@次训练/当前训练次数 %ld次",num,(long)nowNum];
+    NSArray *tempArr = [NSArray bg_arrayWithName:SaveTrainName];
+    NSInteger completeNum = 0;
+    for (int i = 0; i < tempArr.count; i ++) {
+        GBAddTrainModel *item = tempArr[i];
+        if (item.isFinish) {
+            completeNum = completeNum +1;
+        }
+    }
+    
+    CGFloat percent = [[NSNumber numberWithInteger:completeNum] floatValue]/[num floatValue];
+    self.waveLab.text = [NSString stringWithFormat:@"总共需要%@次训练/完成训练次数 %ld次",num,(long)completeNum];
     self.percentLab.text = [NSString stringWithFormat:@"%.2f%%",percent*100];
     customWave.percent = percent;
     [customWave reset];

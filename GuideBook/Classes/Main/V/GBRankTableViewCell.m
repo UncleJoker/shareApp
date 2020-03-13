@@ -14,12 +14,12 @@
     UILabel *titleLab;
     UILabel *troduceLab;
     UILabel *likeLab;
+    UIImageView *likeImg;
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         backView = [UIView new];
-        [backView setBackgroundColor:HexColor(@"33CCFF")];
         backView.layer.cornerRadius = 8;
         backView.layer.masksToBounds = YES;
         [self.contentView addSubview:backView];
@@ -42,10 +42,10 @@
     if (!titleLab) {
         titleLab = [UILabel new];
         [titleLab setFont:[UIFont systemFontOfSize:16 weight:(UIFontWeightBold)]];
-        [titleLab setTextAlignment:(NSTextAlignmentCenter)];
         [titleLab setTextColor:Main_TitleColor];
         [backView addSubview:titleLab];
-        titleLab.sd_layout.leftSpaceToView(cellImage, 20).rightSpaceToView(backView, 20).topSpaceToView(backView, 15).heightIs(18);
+        titleLab.sd_layout.leftSpaceToView(cellImage, 20).topSpaceToView(backView, 15).heightIs(18);
+        [titleLab setSingleLineAutoResizeWithMaxWidth:200];
     }
     
     if (!troduceLab) {
@@ -56,12 +56,30 @@
         [backView addSubview:troduceLab];
         troduceLab.sd_layout.leftSpaceToView(cellImage, 20).rightSpaceToView(backView, 20).topSpaceToView(titleLab, 10).bottomSpaceToView(backView, 10);
     }
+    
+    if (!likeImg) {
+        likeImg = [UIImageView new];
+        [likeImg setImage:IMG(@"like_img")];
+        [backView addSubview:likeImg];
+        likeImg.sd_layout.rightSpaceToView(backView, 20).heightIs(15).widthEqualToHeight().centerYEqualToView(titleLab);
+    }
+    
+    if (!likeLab) {
+        likeLab = [UILabel new];
+        [likeLab setTextColor:Main_ContentColor];
+        [likeLab setTextAlignment:(NSTextAlignmentRight)];
+        [likeLab setFont:[UIFont systemFontOfSize:13 weight:(UIFontWeightRegular)]];
+        [backView addSubview:likeLab];
+        likeLab.sd_layout.rightSpaceToView(likeImg, 5).leftSpaceToView(titleLab, 20).centerYEqualToView(titleLab).heightIs(15);
+    }
+    
 }
 
 - (void)setDataDic:(NSDictionary *)dataDic{
     [cellImage setImage:IMG([dataDic valueForKey:@"image"])];
     [titleLab setText:[dataDic valueForKey:@"trainTitle"]];
     [troduceLab setText:[dataDic valueForKey:@"trainTroduce"]];
+    [likeLab setText:[dataDic valueForKey:@"trainPeo"]];
 }
 
 - (void)awakeFromNib {

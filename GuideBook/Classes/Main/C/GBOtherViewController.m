@@ -21,7 +21,10 @@
 }
 
 - (void)setUI{
+    
     self.navigationItem.title = @"其他";
+    
+    
 }
 
 /*
