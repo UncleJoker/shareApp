@@ -6,8 +6,8 @@
 //  Copyright © 2017年 Rainy. All rights reserved.
 //
 
-#import "GBBaseViewController.h"
+#import "GuiBBaseViewController.h"
 
-@interface YLTableViewVC : GBBaseViewController
+@interface YLTableViewVC : GuiBBaseViewController
 
 @end

@@ -1,0 +1,28 @@
+//
+//  GuiBAddTrainModel.h
+//  GuideBook
+//
+//  Created by Apple on 2020/3/12.
+//  Copyright © 2020 Design. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "GuiBTrainModel.h"
+#import "BGDB.h"
+NS_ASSUME_NONNULL_BEGIN
+
+@interface GuiBAddTrainModel : NSObject
+
+@property (nonatomic, copy) NSString *trainTitle;
+
+@property (nonatomic, copy) NSString *time;
+
+@property (nonatomic, copy) NSString *trainAddress;
+
+@property (nonatomic, strong) NSDictionary *trainDic;
+
+@property (nonatomic, assign) BOOL isFinish;// 是否完成
+
+@end
+
+NS_ASSUME_NONNULL_END

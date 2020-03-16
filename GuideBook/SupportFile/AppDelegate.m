@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "GBMainTabbarViewController.h"
+#import "GuiBMainTabbarViewController.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong) NSMutableData *data;
@@ -23,7 +23,7 @@
     self.window = [[UIWindow alloc] init];
     self.window.frame = [UIScreen mainScreen].bounds;
     [self.window makeKeyAndVisible];
-    GBMainTabbarViewController *rootViewController = [[GBMainTabbarViewController alloc] init];
+    GuiBMainTabbarViewController *rootViewController = [[GuiBMainTabbarViewController alloc] init];
     [self.window setRootViewController:rootViewController];
     return YES;
 }
