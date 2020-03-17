@@ -78,7 +78,7 @@
     }
     
     CGFloat percent = [[NSNumber numberWithInteger:completeNum] floatValue]/[num floatValue];
-    self.waveLab.text = [NSString stringWithFormat:@"总共需要%@次训练/完成训练次数 %ld次",num,(long)completeNum];
+    self.waveLab.text = [NSString stringWithFormat:SetAlertTarget,num,(long)completeNum];
     self.percentLab.text = [NSString stringWithFormat:@"%.2f%%",percent*100];
     customWave.percent = percent;
     [customWave reset];
@@ -87,8 +87,8 @@
 }
 
 - (void)setUI{
-    self.navigationItem.title = @"设置中心";
-    [self setNavigationRightItemWithTitle:@"训练目标" target:self action:@selector(setTargetNumbers)];
+    self.navigationItem.title = SetTitle;
+    [self setNavigationRightItemWithTitle:SetTarget target:self action:@selector(setTargetNumbers)];
     [self addWaveView];
     [self.view addSubview:self.waveLab];
     self.waveLab.sd_layout.centerXEqualToView(self.view).topSpaceToView(self.view, 130).heightIs(22);
@@ -149,19 +149,19 @@
 
 #pragma mark -- action
 - (void)setTargetNumbers{
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"请输入想要训练的总次数" message:@"" preferredStyle:(UIAlertControllerStyleAlert)];
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:SetAlertTargetTitle message:@"" preferredStyle:(UIAlertControllerStyleAlert)];
     
-    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:BaseSure style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         UITextField *numberTF = alertController.textFields.firstObject;
         [[NSUserDefaults standardUserDefaults] setObject:numberTF.text forKey:TrainNumbers];
         [[NSUserDefaults standardUserDefaults] synchronize];
         [self getData];
     }]];
     //增加取消按钮；
-    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:nil]];
+    [alertController addAction:[UIAlertAction actionWithTitle:BaseCancel style:UIAlertActionStyleDefault handler:nil]];
     //定义第一个输入框；
     [alertController addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
-        textField.placeholder = @"请输入训练总次数";
+        textField.placeholder = SetTextPlaceholde;
         textField.keyboardType = UIKeyboardTypeNumberPad;
     }];
     [self presentViewController:alertController animated:true completion:nil];
@@ -230,7 +230,7 @@
             break;
         case 4:
         {
-            NSString *shareText = @"分享的标题";
+            NSString *shareText = SetShareTitle;
             UIImage *shareImage = [UIImage imageNamed:@"football"];
             NSArray *activityItemsArray = @[shareText,shareImage];
             // 自定义的CustomActivity，继承自UIActivity
@@ -290,7 +290,7 @@
   // 设置邮件代理
   [mailCompose setMailComposeDelegate:self];
   // 设置邮件主题
-  [mailCompose setSubject:@"反馈意见"];
+  [mailCompose setSubject:SetBackFeedTitle];
   // 设置收件人
   [mailCompose setToRecipients:@[@"guidebook_share@gmail.com"]];
   // 设置抄送人
@@ -300,7 +300,7 @@
   /**
    *  设置邮件的正文内容
    */
-  NSString *emailContent = @"请填写反馈内容";
+  NSString *emailContent = SetBackFeedContent;
   // 是否为HTML格式
   [mailCompose setMessageBody:emailContent isHTML:NO];
   
@@ -365,7 +365,7 @@
 - (UILabel *)waveLab{
     if (!_waveLab) {
         _waveLab = [[UILabel alloc] init];
-        _waveLab.text = @"暂未添加训练次数";
+        _waveLab.text = SetNoTargetTitle;
         [_waveLab setTextColor:Main_TitleColor];
         [_waveLab setFont:[UIFont systemFontOfSize:18 weight:(UIFontWeightBold)]];
         [_waveLab setTextAlignment:(NSTextAlignmentCenter)];
@@ -375,7 +375,7 @@
 
 - (NSMutableArray *)dataArr{
     if (!_dataArr){
-        _dataArr = [NSMutableArray arrayWithObjects:@{@"title":@"反馈意见",@"img":@"back"},@{@"title":@"点赞鼓励",@"img":@"good"},@{@"title":@"联系我们",@"img":@"chat"},@{@"title":@"关于我们",@"img":@"about"},@{@"title":@"分享好友",@"img":@"share"}, nil];
+        _dataArr = [NSMutableArray arrayWithObjects:@{@"title":SetCellBakcFeed,@"img":@"back"},@{@"title":SetCellGood,@"img":@"good"},@{@"title":SetCellConnect,@"img":@"chat"},@{@"title":SetCellAbout,@"img":@"about"},@{@"title":SetCellShare,@"img":@"share"}, nil];
     }
     return _dataArr;
 }

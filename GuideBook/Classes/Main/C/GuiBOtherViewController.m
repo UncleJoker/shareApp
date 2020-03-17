@@ -22,7 +22,7 @@
 
 - (void)setUI{
     
-    self.navigationItem.title = @"其他";
+    self.navigationItem.title = OtherTitle;
     
     
 }

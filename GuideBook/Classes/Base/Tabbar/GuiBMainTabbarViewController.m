@@ -31,9 +31,9 @@
     GuiBBaseNaviViewController *setVC = [[GuiBBaseNaviViewController alloc] initWithRootViewController:[GuiBSetViewController new]];
     
     NSArray <NSDictionary *>*VCArray = @[
-    @{@"vc":mainVC,@"normalImg":@"main_normal",@"selectImg":@"main_select",@"itemTitle":@"训练项目"},
-    @{@"vc":[UIViewController new],@"normalImg":@"",@"selectImg":@"",@"itemTitle":@"新增"},
-    @{@"vc":setVC,@"normalImg":@"set_normal",@"selectImg":@"set_select",@"itemTitle":@"设置中心"}];
+    @{@"vc":mainVC,@"normalImg":@"main_normal",@"selectImg":@"main_select",@"itemTitle":MainTabbarItem1},
+    @{@"vc":[UIViewController new],@"normalImg":@"",@"selectImg":@"",@"itemTitle":@""},
+    @{@"vc":setVC,@"normalImg":@"set_normal",@"selectImg":@"set_select",@"itemTitle":MainTabbarItem2}];
     
     NSMutableArray *tabBarConfs = @[].mutableCopy;
     NSMutableArray *tabBarVCs = @[].mutableCopy;

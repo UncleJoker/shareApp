@@ -50,7 +50,7 @@
 
 - (void)setUI{
     
-    [self setNavigationRightItemWithTitle:@"完成" target:self action:@selector(finishAction)];
+    [self setNavigationRightItemWithTitle:DetailComplete target:self action:@selector(finishAction)];
     
     _scrollview=[[TPKeyboardAvoidingScrollView alloc]init];
     _scrollview.frame = CGRectMake(0, 0, GB_ScreenWidth, GB_ScreenHeight-NaviH);
@@ -63,7 +63,7 @@
     numView.sd_layout.topSpaceToView(self.headView, 0).leftEqualToView(self.scrollview).rightEqualToView(self.scrollview).heightIs(50);
     
     numTitle = [UILabel new];
-    [numTitle setText:@"训练总次数"];
+    [numTitle setText:DetailTotal];
     [numTitle setTextColor:Main_TitleColor];
     [numTitle setFont:FONT_SIZE_15];
     [numView addSubview:numTitle];
@@ -71,7 +71,7 @@
     [numTitle setSingleLineAutoResizeWithMaxWidth:200];
     
     numberLab = [UILabel new];
-    [numberLab setText:@"123次"];
+    [numberLab setText:DetailNum];
     [numberLab setTextColor:Main_ContentColor];
     [numberLab setFont:FONT_SIZE_13_R];
     [numView addSubview:numberLab];
@@ -133,10 +133,10 @@
 
 - (void)finishAction{
     if (self.model.isFinish) {
-        [LCProgressHUD showSuccess:@"您已经完成训练,无需再次完成"];
+        [LCProgressHUD showSuccess:DetailSuccess];
         return;
     }
-    HX_AlertView *alert = [[HX_AlertView alloc] initWithTitle:@"完成训练" message:@"是否已经完成训练项目" parentControl:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定" cancelButtonBlock:^{
+    HX_AlertView *alert = [[HX_AlertView alloc] initWithTitle:DetailAlertTitle message:DetailAlertContent parentControl:self cancelButtonTitle:BaseCancel otherButtonTitles:BaseSure cancelButtonBlock:^{
         return ;
     } otherButtonBlock:^{
         self.model.isFinish = YES;

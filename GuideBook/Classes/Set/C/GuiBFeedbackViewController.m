@@ -26,11 +26,11 @@
 }
 
 - (void)setUI{
-    self.navigationItem.title = @"反馈意见";
+    self.navigationItem.title = FeedBackTitle;
     
     if (!titleLab) {
         titleLab = [UILabel new];
-        [titleLab setText:@"发送反馈内容"];
+        [titleLab setText:SetBackFeedContent];
         [titleLab setFont:[UIFont systemFontOfSize:16 weight:(UIFontWeightBold)]];
         [titleLab setTextAlignment:(NSTextAlignmentCenter)];
         [titleLab setTextColor:[UIColor whiteColor]];
@@ -53,7 +53,7 @@
     
     if (!sendBtn) {
         sendBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        [sendBtn setTitle:@"发送" forState:(UIControlStateNormal)];
+        [sendBtn setTitle:FeedBackSend forState:(UIControlStateNormal)];
         [sendBtn setBackgroundColor:Main_BackGroundColor];
         [sendBtn setTitleColor:[UIColor whiteColor] forState:(UIControlStateNormal)];
         [sendBtn addTarget:self action:@selector(sendBtnAction) forControlEvents:(UIControlEventTouchUpInside)];
@@ -67,10 +67,10 @@
 
 - (void)sendBtnAction{
     if ([textView.text isEqualToString:@""]) {
-        [LCProgressHUD showFailure:@"请输入反馈内容"];
+        [LCProgressHUD showFailure:FeedBackAlertContent];
         return;
     }
-    [LCProgressHUD showSuccess:@"多谢你的反馈!"];
+    [LCProgressHUD showSuccess:FeedBackAlertSuccess];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

@@ -14,7 +14,6 @@
 #import "GuiBRankingViewController.h"
 #import "GuiBTutorialViewController.h"
 #import "GuiBOtherViewController.h"
-#import "YLTableViewVC.h"
 #import "GuiBDetailViewController.h"
 
 @interface GuiBMainViewController ()<UITableViewDelegate,UITableViewDataSource,GBMainBtnDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate>
@@ -54,8 +53,8 @@
 }
 
 - (void)setUI{
-    self.navigationItem.title = @"训练项目";
-    [self setNavigationRightItemWithTitle:@"清空" target:self action:@selector(clearAllData)];
+    self.navigationItem.title = HomeTitle;
+    [self setNavigationRightItemWithTitle:HomeClean target:self action:@selector(clearAllData)];
     [self.view addSubview:self.list];
     [self.list setTableHeaderView:self.headView];
     
@@ -118,7 +117,7 @@
 
 // 修改编辑按钮文字
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return @"删除";
+    return HomeDelete;
 }
 
 #pragma mark - btnDelegate
@@ -166,24 +165,24 @@
 
 - (NSAttributedString *)titleForEmptyDataSet:(UIScrollView *)scrollView
 {
-    NSString *text = @"暂无训练项目";
+    NSString *text = HomeNodataTitle;
     return [[NSAttributedString alloc] initWithString:text attributes:nil];
 }
 
 - (NSAttributedString *)descriptionForEmptyDataSet:(UIScrollView *)scrollView
 {
     
-    NSString *text = [NSString stringWithFormat:@"请添加新的训练项目,然后回来查看详情"];
+    NSString *text = [NSString stringWithFormat:HomeNodataMessage];
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:text attributes:nil];
     
-    [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:17.0] range:[attributedString.string rangeOfString:@"查看详情"]];
+    [attributedString addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:17.0] range:[attributedString.string rangeOfString:HomeNodataLook]];
     
     return attributedString;
 }
 
 - (NSAttributedString *)buttonTitleForEmptyDataSet:(UIScrollView *)scrollView forState:(UIControlState)state
 {
-    NSString *text = @"添加新的训练项目";
+    NSString *text = HomeAddNewPro;
     UIFont *font = [UIFont systemFontOfSize:16.0];
     UIColor *textColor = HexColor(@"007aff");
     
@@ -235,7 +234,7 @@
 #pragma mark - action
 - (void)clearAllData{
     
-    HX_AlertView *alert = [[HX_AlertView alloc]initWithTitle:@"清空内容" message:@"返回将清空内容，是否继续" parentControl:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认" cancelButtonBlock:^{
+    HX_AlertView *alert = [[HX_AlertView alloc]initWithTitle:HomeAlertTitle message:HomeAlertMessa parentControl:self cancelButtonTitle:BaseCancel otherButtonTitles:BaseSure cancelButtonBlock:^{
     } otherButtonBlock:^{
         [NSArray bg_clearArrayWithName:SaveTrainName];
         [self getData];

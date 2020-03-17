@@ -27,7 +27,7 @@
 }
 
 - (void)setUI{
-    self.navigationItem.title =  @"简介";
+    self.navigationItem.title = TroduceTitle;
     
     footImage =  [UIImageView new];
     [footImage setImage:IMG(@"football")];
@@ -35,7 +35,7 @@
     footImage.sd_layout.topSpaceToView(self.view, 20).centerXEqualToView(self.view).widthIs(100).heightIs(100);
     
     titleLab = [UILabel new];
-    [titleLab setText:@"足球 (Football)"];
+    [titleLab setText:TroduceHeadT];
     [titleLab setTextColor:Main_TitleColor];
     [titleLab setFont:[UIFont systemFontOfSize:18 weight:(UIFontWeightBold)]];
     [self.view addSubview:titleLab];
@@ -53,7 +53,7 @@
     [troduceLab setTextColor:HexColor(@"3f3f3f")];
     troduceLab.numberOfLines = 0;
     [troduceLab setFont:[UIFont systemFontOfSize:14 weight:(UIFontWeightMedium)]];
-    [troduceLab setText:@"足球，英文football，被誉为“世界第一运动”，全球体育界最具影响力的体育运动。\n标准的11人制足球比赛由两队各派10名球员与1名守门员，总共22人，在长方形的草地球场上对抗、防守、进攻。\n\n比赛时尽量将足球射入对方的球门内，每射入一球就可以得到一分，当比赛完毕后，得分多的一队则胜出。如果在比赛规定时间内得分相同，则须看比赛章则而定，可以抽签、加时再赛或互射点球（十二码）等形式比赛分高下。\n  足球比赛中除了守门员可以在己方禁区内利用手部接触足球外，球场上每名球员只可以利用手以外的身体其他部分控制足球（开界外球例外）。\n当今世界足球水平最高的联赛是欧洲足球五大联赛。分别是西甲联赛，英超联赛，意甲联赛，德甲联赛，法甲联赛。"];
+    [troduceLab setText:TroduceContent];
     [self.view addSubview:troduceLab];
     troduceLab.sd_layout.leftSpaceToView(self.view, 20).topSpaceToView(footGif, 10).rightSpaceToView(self.view, 20).bottomSpaceToView(self.view, 20);
     

@@ -30,14 +30,14 @@
 
 - (void)initData{
     self.imageFile = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/footBallHead.png"];
-    self.cellArr = [NSArray arrayWithObjects:@"修改头像",@"昵称",@"名言", nil];
-    self.nameSr = [[NSUserDefaults standardUserDefaults] objectForKey:UserName] ? [[NSUserDefaults standardUserDefaults] objectForKey:UserName] : @"足球先生";
-    self.sayingStr = [[NSUserDefaults standardUserDefaults] objectForKey:UserSaying] ? [[NSUserDefaults standardUserDefaults] objectForKey:UserSaying] : @"编辑名言";
+    self.cellArr = [NSArray arrayWithObjects:EditCellAvatar,EditCellName,EditCellSaying, nil];
+    self.nameSr = [[NSUserDefaults standardUserDefaults] objectForKey:UserName] ? [[NSUserDefaults standardUserDefaults] objectForKey:UserName] : EditDefaultName;
+    self.sayingStr = [[NSUserDefaults standardUserDefaults] objectForKey:UserSaying] ? [[NSUserDefaults standardUserDefaults] objectForKey:UserSaying] : EditDefaultSaying;
     [self.list reloadData];
 }
 
 - (void)setUI{
-    self.navigationItem.title = @"修改用户信息";
+    self.navigationItem.title = EditTitle;
     [self.view addSubview:self.list];
 }
 
@@ -85,12 +85,12 @@
             break;
         case 1:
         {
-            [self showAlertInputTitle:@"修改昵称" message:@"请输入昵称" saveKey:UserName];
+            [self showAlertInputTitle:EditAlertTitleName message:EditAlertMessageName saveKey:UserName];
         }
             break;
         case 2:
         {
-            [self showAlertInputTitle:@"修改名言" message:@"请输入名言警句" saveKey:UserSaying];
+            [self showAlertInputTitle:EditAlertTitleSaying message:EditAlertMessageSaying saveKey:UserSaying];
         }
             break;
             
@@ -106,7 +106,7 @@
                                                                    message:nil
                                                             preferredStyle:UIAlertControllerStyleAlert];
     
-    UIAlertAction* okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault
+    UIAlertAction* okAction = [UIAlertAction actionWithTitle:BaseSure style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction * action) {
                                                          //得到文本信息
                                                          for(UITextField *text in alert.textFields){
@@ -118,7 +118,7 @@
                                                              [self initData];
                                                          }
                                                      }];
-    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel
+    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:BaseCancel style:UIAlertActionStyleCancel
                                                          handler:^(UIAlertAction * action) {
                                                              //响应事件
                                                          }];

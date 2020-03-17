@@ -66,7 +66,7 @@
     menu1.layer.borderColor  = [UIColor whiteColor].CGColor;
     menu1.layer.borderWidth  = 1;
     menu1.layer.cornerRadius = 3;
-    menu1.title           = @"请选择训练";
+    menu1.title           = AddSelectTitle;
     menu1.titleBgColor    = [UIColor colorWithRed:64/255.f green:151/255.f blue:255/255.f alpha:1];
     menu1.titleFont       = [UIFont boldSystemFontOfSize:15];
     menu1.titleColor      = [UIColor whiteColor];
@@ -131,17 +131,17 @@
 - (void)commitBtnAction{
     
     if (self.selectIndex == -1) {
-        [LCProgressHUD showFailure:@"请选择训练项目"];
+        [LCProgressHUD showFailure:AddNoType];
         return;
     }
     
-    if ([self.timeBtn.titleLabel.text isEqualToString:@"选择时间"]) {
-        [LCProgressHUD showFailure:@"请选择训练时间"];
+    if ([self.timeBtn.titleLabel.text isEqualToString:AddChooseTime]) {
+        [LCProgressHUD showFailure:AddAlertChooseTime];
         return;
     }
     
     if ([self.addressTF.text isEqualToString:@""]) {
-        [LCProgressHUD showFailure:@"请输入训练场地"];
+        [LCProgressHUD showFailure:AddAlertChooseAddress];
         return;
     }
     
@@ -155,7 +155,7 @@
     [self.saveTrainArr addObject:model];
     [self.saveTrainArr bg_saveArrayWithName:SaveTrainName];
     
-    [LCProgressHUD showSuccess:@"添加训练成功,请按时训练"];
+    [LCProgressHUD showSuccess:AddAlertSuccess];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:AddSunccessNotice object:nil userInfo:nil];
     
@@ -229,7 +229,7 @@
         _timeBtn.tag = 1000;
         _timeBtn.layer.cornerRadius = 5;
         _timeBtn.backgroundColor = [UIColor whiteColor];
-        [_timeBtn setTitle:@"选择时间" forState:UIControlStateNormal];
+        [_timeBtn setTitle:AddChooseTime forState:UIControlStateNormal];
         [_timeBtn setTitleColor:Main_TitleColor forState:(UIControlStateNormal)];
         [_timeBtn addTarget:self action:@selector(selectAction:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -239,7 +239,7 @@
 - (UITextField *)addressTF{
     if (!_addressTF) {
         _addressTF = [UITextField new];
-        [_addressTF setPlaceholder:@"       请输入训练地址"];
+        [_addressTF setPlaceholder:AddChooseAddress];
         [_addressTF setFont:[UIFont systemFontOfSize:16]];
         [_addressTF setBackgroundColor:[UIColor whiteColor]];
         _addressTF.layer.masksToBounds = YES;
@@ -260,7 +260,7 @@
 - (UILabel *)trduceLab{
     if (!_trduceLab) {
         _trduceLab = [UILabel new];
-        [_trduceLab setText:@"请选择一个训练项目,此处将会显示训练要求与技巧!"];
+        [_trduceLab setText:AddNochooseTitle];
         _trduceLab.numberOfLines = 0;
         [_trduceLab setFont:[UIFont systemFontOfSize:16]];
         _trduceLab.textColor =  HexColor(@"FFFFFF");
@@ -273,7 +273,7 @@
         _commitBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         [_commitBtn setBackgroundColor:[UIColor whiteColor]];
         [_commitBtn setTitleColor:Main_TitleColor forState:(UIControlStateNormal)];
-        [_commitBtn setTitle:@"确定" forState:(UIControlStateNormal)];
+        [_commitBtn setTitle:BaseSure forState:(UIControlStateNormal)];
         _commitBtn.layer.cornerRadius = 8;
         [_commitBtn addTarget:self action:@selector(commitBtnAction) forControlEvents:(UIControlEventTouchUpInside)];
     }
@@ -285,7 +285,7 @@
         _closeBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         [_closeBtn setBackgroundColor:[UIColor whiteColor]];
         [_closeBtn setTitleColor:Main_TitleColor forState:(UIControlStateNormal)];
-        [_closeBtn setTitle:@"取消" forState:(UIControlStateNormal)];
+        [_closeBtn setTitle:BaseCancel forState:(UIControlStateNormal)];
         _closeBtn.layer.cornerRadius = 8;
         [_closeBtn addTarget:self action:@selector(closeBtnAction) forControlEvents:(UIControlEventTouchUpInside)];
     }

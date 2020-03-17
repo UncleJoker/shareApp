@@ -72,7 +72,6 @@
         [backView addSubview:likeLab];
         likeLab.sd_layout.rightSpaceToView(likeImg, 5).leftSpaceToView(titleLab, 20).centerYEqualToView(titleLab).heightIs(15);
     }
-    
 }
 
 - (void)setDataDic:(NSDictionary *)dataDic{

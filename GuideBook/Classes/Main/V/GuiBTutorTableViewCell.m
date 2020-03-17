@@ -22,7 +22,6 @@
 
 - (void)setUI{
     titleLab = [UILabel new];
-    [titleLab setText:@"距离球门一段距离，定点射门"];
     [titleLab setTextColor:Main_TitleColor];
     [titleLab setFont:[UIFont systemFontOfSize:18 weight:(UIFontWeightBold)]];
     [self.contentView addSubview:titleLab];

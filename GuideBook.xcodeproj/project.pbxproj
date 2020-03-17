@@ -56,9 +56,6 @@
 		189409DA241B5DA100AD68B0 /* YYImageClipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 189409D6241B5DA000AD68B0 /* YYImageClipViewController.m */; };
 		189409DB241B5DA100AD68B0 /* OACheckHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 189409D9241B5DA100AD68B0 /* OACheckHelper.m */; };
 		189409DE241B5DC400AD68B0 /* JXActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 189409DD241B5DC400AD68B0 /* JXActionSheet.m */; };
-		189409E1241B736900AD68B0 /* YLTableViewVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 189409E0241B736900AD68B0 /* YLTableViewVC.m */; };
-		189409E5241B737400AD68B0 /* PlayerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 189409E2241B737400AD68B0 /* PlayerCell.m */; };
-		189409E6241B737400AD68B0 /* PlayerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 189409E3241B737400AD68B0 /* PlayerCell.xib */; };
 		189409E8241B738700AD68B0 /* turo.json in Resources */ = {isa = PBXBuildFile; fileRef = 189409E7241B738700AD68B0 /* turo.json */; };
 		189409EB241B739800AD68B0 /* CLModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 189409EA241B739800AD68B0 /* CLModel.m */; };
 		18940A04241B73A700AD68B0 /* CLSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 189409EE241B73A600AD68B0 /* CLSlider.m */; };
@@ -271,11 +268,6 @@
 		189409D9241B5DA100AD68B0 /* OACheckHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OACheckHelper.m; sourceTree = "<group>"; };
 		189409DC241B5DC400AD68B0 /* JXActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXActionSheet.h; sourceTree = "<group>"; };
 		189409DD241B5DC400AD68B0 /* JXActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXActionSheet.m; sourceTree = "<group>"; };
-		189409DF241B736800AD68B0 /* YLTableViewVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YLTableViewVC.h; sourceTree = "<group>"; };
-		189409E0241B736900AD68B0 /* YLTableViewVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YLTableViewVC.m; sourceTree = "<group>"; };
-		189409E2241B737400AD68B0 /* PlayerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerCell.m; sourceTree = "<group>"; };
-		189409E3241B737400AD68B0 /* PlayerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerCell.xib; sourceTree = "<group>"; };
-		189409E4241B737400AD68B0 /* PlayerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerCell.h; sourceTree = "<group>"; };
 		189409E7241B738700AD68B0 /* turo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = turo.json; sourceTree = "<group>"; };
 		189409E9241B739800AD68B0 /* CLModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CLModel.h; sourceTree = "<group>"; };
 		189409EA241B739800AD68B0 /* CLModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CLModel.m; sourceTree = "<group>"; };
@@ -972,8 +964,6 @@
 				18940968241A28DE00AD68B0 /* GuiBRankingViewController.m */,
 				1894096A241A291B00AD68B0 /* GuiBTutorialViewController.h */,
 				1894096B241A291B00AD68B0 /* GuiBTutorialViewController.m */,
-				189409DF241B736800AD68B0 /* YLTableViewVC.h */,
-				189409E0241B736900AD68B0 /* YLTableViewVC.m */,
 				1894096D241A294100AD68B0 /* GuiBOtherViewController.h */,
 				1894096E241A294100AD68B0 /* GuiBOtherViewController.m */,
 				18940A43241B8D4900AD68B0 /* GuiBDetailViewController.h */,
@@ -991,9 +981,6 @@
 				18E24F2D2419D21E00CD0EF5 /* GuiBMainTableViewCell.m */,
 				18940974241A31F400AD68B0 /* GuiBRankTableViewCell.h */,
 				18940975241A31F400AD68B0 /* GuiBRankTableViewCell.m */,
-				189409E4241B737400AD68B0 /* PlayerCell.h */,
-				189409E2241B737400AD68B0 /* PlayerCell.m */,
-				189409E3241B737400AD68B0 /* PlayerCell.xib */,
 				18940A33241B80CF00AD68B0 /* GuiBTutorTableViewCell.h */,
 				18940A34241B80CF00AD68B0 /* GuiBTutorTableViewCell.m */,
 				18940A46241B8F5100AD68B0 /* GuiBDetailHeadView.h */,
@@ -1304,7 +1291,6 @@
 				18940A42241B839B00AD68B0 /* (Turo_1.gif in Resources */,
 				18940A59241B933500AD68B0 /* README.md in Resources */,
 				18940A3E241B839B00AD68B0 /* (Turo_6.gif in Resources */,
-				189409E6241B737400AD68B0 /* PlayerCell.xib in Resources */,
 				18940A3D241B839B00AD68B0 /* (Turo_3.gif in Resources */,
 				18940A5A241B933500AD68B0 /* LICENSE.txt in Resources */,
 				18E24F66241A096A00CD0EF5 /* TrainData.json in Resources */,
@@ -1369,7 +1355,6 @@
 				18940A2D241B73B900AD68B0 /* MASLayoutConstraint.m in Sources */,
 				18E24ECB2418D8E400CD0EF5 /* MJRefreshConst.m in Sources */,
 				1805E0B5241F1314009D8829 /* FMDatabaseQueue.m in Sources */,
-				189409E5241B737400AD68B0 /* PlayerCell.m in Sources */,
 				18940A0B241B73A700AD68B0 /* CLPlayerMaskView.m in Sources */,
 				18940A57241B933500AD68B0 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				189409C8241B547100AD68B0 /* NSBundle+TZImagePicker.m in Sources */,
@@ -1391,7 +1376,6 @@
 				18E24DFB2418BB7200CD0EF5 /* AxcAE_TabBarBadge.m in Sources */,
 				18940982241B267800AD68B0 /* GuiBAboutUSViewController.m in Sources */,
 				18E24DFC2418BB7200CD0EF5 /* AxcAE_TabBar.m in Sources */,
-				189409E1241B736900AD68B0 /* YLTableViewVC.m in Sources */,
 				18E24ECE2418D8E400CD0EF5 /* NSBundle+MJRefresh.m in Sources */,
 				18E24DDA24189B6900CD0EF5 /* AppDelegate.m in Sources */,
 				18E24DEB24189B6B00CD0EF5 /* main.m in Sources */,

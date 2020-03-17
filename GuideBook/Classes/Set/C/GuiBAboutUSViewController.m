@@ -26,7 +26,7 @@
 }
 
 - (void)setUI{
-    self.navigationItem.title = @"关于我们";
+    self.navigationItem.title = AboutTitle;
     
     appicon = [UIImageView new];
     [appicon setImage:IMG(@"AppIcon")];
@@ -37,7 +37,7 @@
     
     titleLab = [UILabel new];
     [titleLab setTextColor:Main_TitleColor];
-    [titleLab setText:@"足球技巧训练"];
+    [titleLab setText:AboutHeadTitle];
     [titleLab setTextAlignment:(NSTextAlignmentCenter)];
     [titleLab setFont:[UIFont systemFontOfSize:20 weight:(UIFontWeightBold)]];
     [self.view addSubview:titleLab];
@@ -45,7 +45,7 @@
     [titleLab setSingleLineAutoResizeWithMaxWidth:GB_ScreenWidth];
     
     descLab = [UILabel new];
-    [descLab setText:@"         球感是一个很虚的概念，因此对球感的养成其实并无捷径，这就需要你在平时多下功夫！下面十个动作，每个动作练习30秒，组间间歇30秒再进行下一个动作。每天练习5分钟，七天就能见到效果！"];
+    [descLab setText:AboutContent];
     [descLab setTextColor:Main_ContentColor];
     descLab.numberOfLines = 0;
     [descLab setFont:[UIFont systemFontOfSize:16 weight:(UIFontWeightMedium)]];
@@ -53,7 +53,7 @@
     descLab.sd_layout.leftSpaceToView(self.view, 30).rightSpaceToView(self.view, 30).topSpaceToView(titleLab, 20).heightIs(100);
     
     coyLab = [UILabel new];
-    [coyLab setText:@"Version 1.0, Made By SuitDevs"];
+    [coyLab setText:AboutVersion];
     [coyLab setTextColor:HexColor(@"8e8e8e")];
     [coyLab setFont:[UIFont systemFontOfSize:13 weight:(UIFontWeightBold)]];
     [coyLab setTextAlignment:(NSTextAlignmentCenter)];

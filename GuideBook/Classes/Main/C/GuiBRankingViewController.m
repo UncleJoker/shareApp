@@ -36,7 +36,7 @@
 }
 
 - (void)setUI{
-    self.navigationItem.title = @"训练排行";
+    self.navigationItem.title = RankTitle;
     
     [self.view addSubview:self.list];
     

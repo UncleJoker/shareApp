@@ -33,7 +33,7 @@
 }
 
 - (void)setUI{
-    self.navigationItem.title = @"动态教程";
+    self.navigationItem.title = TutorTitle;
     [self.view addSubview:self.list];
 }
 
